@@ -1,0 +1,68 @@
+<Chart GridHeightSize="2.952756e-01" UseDefaultLinkSpacingWhenDragging="false" GridVisibleOnAllViews="true" ShowAllFlag="false" ShowPages="false" BackColour="16777215" DefaultLinkSpacing="2.952756e-01" WiringDistanceNear="7.874016e-02" UseWiringHeightForThemeIcon="true" DefaultTickRate="1.000000e+00" WiringHeight="1.968504e-01" HiddenItemsVisibility="ItemsVisibilityHidden" GridWidthSize="2.952756e-01" HideMatchingTimeZoneFormat="false" TimeBarVisible="false" WiringSpacing="1.968504e-01" BlankLinkLabels="false" UseLocalTimeZone="true" TypeIconDrawingMode="HighQuality" WiringDistanceFar="3.937008e-01" IdReferenceLinking="false" IsBackColourFilled="true" SnapToGrid="false" LabelSumNumericLinks="false" LabelRule="LabelRuleMerge" Rigorous="true" MsxmlVersion=b'"4.20.9818.0"' SchemaVersion=b'"7.0.0.1"'>
+    <StrengthCollection>
+        <Strength DotStyle="DotStyleDashed" Id=b'"Dashed"' Name=b'"Dashed"'/>
+        <Strength DotStyle="DotStyleSolid" Id=b'"Solid"' Name=b'"Solid"'/>
+    </StrengthCollection>
+    <EntityTypeCollection>
+        <EntityType Name=b'"Person"' Colour="0" IconFile=b'"Person"' PreferredRepresentation="RepresentAsIcon"/>
+        <EntityType Name=b'"Woman"' Colour="0" IconFile=b'"Woman"' PreferredRepresentation="RepresentAsIcon"/>
+    </EntityTypeCollection>
+    <LinkTypeCollection>
+        <LinkType Colour="0" Name=b'"Link"'/>
+    </LinkTypeCollection>
+    <ChartItemCollection>
+        <ChartItem DateSet="false" GradeOneIndex="0" Description=b'""' GradeTwoIndex="0" Selected="false" GradeThreeIndex="0" TimeSet="false" Ordered="false" Label=b'"Tyrion"' XPosition="788">
+            <End Y="186" X="788" Z="0">
+                <Entity EntityId=b'"Tyrion"' Identity=b'"Tyrion"' LabelIsIdentity="false">
+                    <Icon TextX="0" TextY="16">
+                        <IconStyle Type=b'"Person"'/>
+                    </Icon>
+                </Entity>
+            </End>
+        </ChartItem>
+        <ChartItem DateSet="false" GradeOneIndex="0" Description=b'""' GradeTwoIndex="0" Selected="false" GradeThreeIndex="0" TimeSet="false" Ordered="false" Label=b'"Tywin"' XPosition="678">
+            <End Y="34" X="678" Z="0">
+                <Entity EntityId=b'"Tywin"' Identity=b'"Tywin"' LabelIsIdentity="false">
+                    <Icon TextX="0" TextY="16">
+                        <IconStyle Type=b'"Person"'/>
+                    </Icon>
+                </Entity>
+            </End>
+        </ChartItem>
+        <ChartItem DateSet="false" GradeOneIndex="0" Description=b'""' GradeTwoIndex="0" Selected="false" GradeThreeIndex="0" TimeSet="false" Ordered="false" Label=b'"Jaime"' XPosition="149">
+            <End Y="927" X="149" Z="0">
+                <Entity EntityId=b'"Jaime"' Identity=b'"Jaime"' LabelIsIdentity="false">
+                    <Icon TextX="0" TextY="16">
+                        <IconStyle Type=b'"Person"'/>
+                    </Icon>
+                </Entity>
+            </End>
+        </ChartItem>
+        <ChartItem DateSet="false" GradeOneIndex="0" Description=b'""' GradeTwoIndex="0" Selected="false" GradeThreeIndex="0" TimeSet="false" Ordered="false" Label=b'"Cersei"' XPosition="829">
+            <End Y="143" X="829" Z="0">
+                <Entity EntityId=b'"Cersei"' Identity=b'"Cersei"' LabelIsIdentity="false">
+                    <Icon TextX="0" TextY="16">
+                        <IconStyle Type=b'"Woman"'/>
+                    </Icon>
+                </Entity>
+            </End>
+        </ChartItem>
+    </ChartItemCollection>
+    <ChartItemCollection>
+        <ChartItem DateSet="false" GradeOneIndex="0" Description=b'""' GradeTwoIndex="0" Selected="false" GradeThreeIndex="0" TimeSet="false" Ordered="false" Label=b'"Father of"' XPosition="0">
+            <Link End1Id=b'"Tywin"' LabelSegment="0" LabelPos="50" End2Id=b'"Tyrion"'>
+                <LinkStyle ArrowStyle="ArrowOnHead" StrengthReference=b'"Solid"' LineColour="0" MlStyle="MultiplicityMultiple" Type=b'"Link"'/>
+            </Link>
+        </ChartItem>
+        <ChartItem DateSet="false" GradeOneIndex="0" Description=b'""' GradeTwoIndex="0" Selected="false" GradeThreeIndex="0" TimeSet="false" Ordered="false" Label=b'"Brother of"' XPosition="0">
+            <Link End1Id=b'"Jaime"' LabelSegment="0" LabelPos="50" End2Id=b'"Tyrion"'>
+                <LinkStyle ArrowStyle="ArrowOnHead" StrengthReference=b'"Solid"' LineColour="0" MlStyle="MultiplicityMultiple" Type=b'"Link"'/>
+            </Link>
+        </ChartItem>
+        <ChartItem DateSet="false" GradeOneIndex="0" Description=b'""' GradeTwoIndex="0" Selected="false" GradeThreeIndex="0" TimeSet="false" Ordered="false" Label=b'"Sister of"' XPosition="0">
+            <Link End1Id=b'"Cersei"' LabelSegment="0" LabelPos="50" End2Id=b'"Tyrion"'>
+                <LinkStyle ArrowStyle="ArrowOnHead" StrengthReference=b'"Solid"' LineColour="0" MlStyle="MultiplicityMultiple" Type=b'"Link"'/>
+            </Link>
+        </ChartItem>
+    </ChartItemCollection>
+</Chart>
