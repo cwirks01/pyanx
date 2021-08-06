@@ -54,7 +54,11 @@ except ImportError:
         except ImportError:
             try:
                 # normal cElementTree install
+<<<<<<< HEAD
                 import xml.etree as etree_
+=======
+                import cElementTree as etree_
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
 
                 XMLParser_import_library = XMLParser_import_elementtree
                 if Verbose_import_:
@@ -62,7 +66,11 @@ except ImportError:
             except ImportError:
                 try:
                     # normal ElementTree install
+<<<<<<< HEAD
                     import xml.etree.ElementTree as etree_
+=======
+                    import elementtree.ElementTree as etree_
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
 
                     XMLParser_import_library = XMLParser_import_elementtree
                     if Verbose_import_:
@@ -91,10 +99,18 @@ def parsexml_(*args, **kwargs):
 
 try:
     from generatedssuper import GeneratedsSuper
+<<<<<<< HEAD
+=======
+except ImportError as exp:
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
 
 except ImportError as exp:
     class GeneratedsSuper(object):
+<<<<<<< HEAD
         tzoff_pattern = re_.compile(r"([+\-])((0\d|1[0-3]):[0-5]\d|14:00)$")
+=======
+        tzoff_pattern = re_.compile(r'(\+|-)((0\d|1[0-3]):[0-5]\d|14:00)$')
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
 
         class _FixedOffsetTZ(datetime_.tzinfo):
             def __init__(self, offset, name):
@@ -379,7 +395,11 @@ except ImportError as exp:
             path = '/'.join(path_list)
             return path
 
+<<<<<<< HEAD
         Tag_strip_pattern_ = re_.compile(r'{.*}')
+=======
+        Tag_strip_pattern_ = re_.compile(r'\{.*\}')
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
 
         def get_path_list_(self, node, path_list):
             if node is None:
@@ -407,7 +427,11 @@ except ImportError as exp:
 
         @classmethod
         def gds_reverse_node_mapping(cls, mapping):
+<<<<<<< HEAD
             return dict(((v, k) for k, v in mapping.items()))
+=======
+            return dict(((v, k) for k, v in mapping.iteritems()))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
 
 #
 # If you have installed IPython you can uncomment and use the following.
@@ -552,7 +576,11 @@ class MixedContainer:
     def getCategory(self):
         return self.category
 
+<<<<<<< HEAD
     def getContenttype(self):
+=======
+    def getContenttype(self, content_type):
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         return self.content_type
 
     def getValue(self):
@@ -615,17 +643,29 @@ class MixedContainer:
             texts = self.value
         elif (self.content_type == MixedContainer.TypeInteger or
               self.content_type == MixedContainer.TypeBoolean):
+<<<<<<< HEAD
             texts = '%d' % self.value
         elif (self.content_type == MixedContainer.TypeFloat or
               self.content_type == MixedContainer.TypeDecimal):
             texts = '%f' % self.value
+=======
+            text = '%d' % self.value
+        elif (self.content_type == MixedContainer.TypeFloat or
+              self.content_type == MixedContainer.TypeDecimal):
+            text = '%f' % self.value
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         elif self.content_type == MixedContainer.TypeDouble:
             texts = '%g' % self.value
         elif self.content_type == MixedContainer.TypeBase64:
+<<<<<<< HEAD
             texts = '%s' % base64.b64encode(self.value)
         else:
             texts = self.value
         return texts
+=======
+            text = '%s' % base64.b64encode(self.value)
+        return text
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
 
     def exportLiteral(self, outfile, level, name):
         if self.category == MixedContainer.CategoryText:
@@ -764,7 +804,11 @@ class ApplicationVersion(GeneratedsSuper):
         outfile.write('<%s%s%s' % (namespace_, name_, namespacedef_ and ' ' + namespacedef_ or '',))
         already_processed = set()
         self.exportAttributes(outfile, level, already_processed, namespace_, name_='ApplicationVersion')
+<<<<<<< HEAD
         if not self.hasContent_():
+=======
+        if self.hasContent_():
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
             outfile.write('>%s' % (eol_,))
             self.exportChildren(outfile, level + 1, namespace_='', name_='ApplicationVersion',
                                 pretty_print=pretty_print)
@@ -945,17 +989,27 @@ class Attribute(GeneratedsSuper):
         if self.AttributeClassReference is not None and 'AttributeClassReference' not in already_processed:
             already_processed.add('AttributeClassReference')
             outfile.write(' AttributeClassReference=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(
                     quote_attrib(self.AttributeClassReference).encode(ExternalEncoding).decode("utf-8"),
                     input_name='AttributeClassReference'),))
+=======
+            self.gds_format_string(quote_attrib(self.AttributeClassReference).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='AttributeClassReference'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         if self.Value is not None and 'Value' not in already_processed:
             already_processed.add('Value')
             outfile.write(' Value=%s' % (quote_attrib(self.Value),))
         if self.AttributeClass is not None and 'AttributeClass' not in already_processed:
             already_processed.add('AttributeClass')
             outfile.write(' AttributeClass=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.AttributeClass).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='AttributeClass'),))
+=======
+            self.gds_format_string(quote_attrib(self.AttributeClass).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='AttributeClass'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
 
     def exportChildren(self, outfile, level, namespace_='', name_='Attribute', fromsubclass_=False, pretty_print=True):
         pass
@@ -1257,6 +1311,7 @@ class AttributeClass(GeneratedsSuper):
 
     def hasContent_(self):
         if (
+<<<<<<< HEAD
                 self.original_tagname_ is not None or
                 self.PasteBehaviour is not None or
                 self.ShowTime is not None or
@@ -1281,6 +1336,9 @@ class AttributeClass(GeneratedsSuper):
                 self.MergeBehaviour is not None or
                 self.Id is not None or
                 self.ShowDate is not None
+=======
+                self.Font
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         ):
             return True
         else:
@@ -1333,16 +1391,26 @@ class AttributeClass(GeneratedsSuper):
         if self.IconFile is not None and 'IconFile' not in already_processed:
             already_processed.add('IconFile')
             outfile.write(' IconFile=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.IconFile).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='IconFile'),))
+=======
+            self.gds_format_string(quote_attrib(self.IconFile).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='IconFile'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         if self.ShowValue is not None and 'ShowValue' not in already_processed:
             already_processed.add('ShowValue')
             outfile.write(' ShowValue="%s"' % self.gds_format_boolean(self.ShowValue, input_name='ShowValue'))
         if self.Name is not None and 'Name' not in already_processed:
             already_processed.add('Name')
             outfile.write(' Name=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.Name).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='Name'),))
+=======
+            self.gds_format_string(quote_attrib(self.Name).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='Name'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         if self.UserCanAdd is not None and 'UserCanAdd' not in already_processed:
             already_processed.add('UserCanAdd')
             outfile.write(' UserCanAdd="%s"' % self.gds_format_boolean(self.UserCanAdd, input_name='UserCanAdd'))
@@ -1356,16 +1424,26 @@ class AttributeClass(GeneratedsSuper):
         if self.Suffix is not None and 'Suffix' not in already_processed:
             already_processed.add('Suffix')
             outfile.write(' Suffix=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.Suffix).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='Suffix'),))
+=======
+            self.gds_format_string(quote_attrib(self.Suffix).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='Suffix'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         if self.Visible is not None and 'Visible' not in already_processed:
             already_processed.add('Visible')
             outfile.write(' Visible="%s"' % self.gds_format_boolean(self.Visible, input_name='Visible'))
         if self.Prefix is not None and 'Prefix' not in already_processed:
             already_processed.add('Prefix')
             outfile.write(' Prefix=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.Prefix).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='Prefix'),))
+=======
+            self.gds_format_string(quote_attrib(self.Prefix).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='Prefix'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         if self.UserCanRemove is not None and 'UserCanRemove' not in already_processed:
             already_processed.add('UserCanRemove')
             outfile.write(
@@ -1382,9 +1460,14 @@ class AttributeClass(GeneratedsSuper):
             outfile.write(' MergeBehaviour=%s' % (quote_attrib(self.MergeBehaviour),))
         if self.Id is not None and 'Id' not in already_processed:
             already_processed.add('Id')
+<<<<<<< HEAD
             outfile.write(
                 ' Id=%s' % (self.gds_format_string(quote_attrib(self.Id).encode(ExternalEncoding).decode("utf-8"),
                                                    input_name='Id'),))
+=======
+            outfile.write(' Id=%s' % (
+            self.gds_format_string(quote_attrib(self.Id).encode(ExternalEncoding).decode('utf-8'), input_name='Id'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         if self.ShowDate is not None and 'ShowDate' not in already_processed:
             already_processed.add('ShowDate')
             outfile.write(' ShowDate="%s"' % self.gds_format_boolean(self.ShowDate, input_name='ShowDate'))
@@ -1901,17 +1984,27 @@ class AttributeClassEntry(GeneratedsSuper):
         if self.AttributeClassReference is not None and 'AttributeClassReference' not in already_processed:
             already_processed.add('AttributeClassReference')
             outfile.write(' AttributeClassReference=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(
                     quote_attrib(self.AttributeClassReference).encode(ExternalEncoding).decode("utf-8"),
                     input_name='AttributeClassReference'),))
+=======
+            self.gds_format_string(quote_attrib(self.AttributeClassReference).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='AttributeClassReference'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         if self.Value is not None and 'Value' not in already_processed:
             already_processed.add('Value')
             outfile.write(' Value=%s' % (quote_attrib(self.Value),))
         if self.AttributeClass is not None and 'AttributeClass' not in already_processed:
             already_processed.add('AttributeClass')
             outfile.write(' AttributeClass=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.AttributeClass).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='AttributeClass'),))
+=======
+            self.gds_format_string(quote_attrib(self.AttributeClass).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='AttributeClass'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
 
     def exportChildren(self, outfile, level, namespace_='', name_='AttributeClassEntry', fromsubclass_=False,
                        pretty_print=True):
@@ -2672,6 +2765,7 @@ class BoxStyle(GeneratedsSuper):
         if self.Strength is not None and 'Strength' not in already_processed:
             already_processed.add('Strength')
             outfile.write(' Strength=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.Strength).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='Strength'),))
         if self.StrengthReference is not None and 'StrengthReference' not in already_processed:
@@ -2684,6 +2778,20 @@ class BoxStyle(GeneratedsSuper):
             outfile.write(' EntityTypeReference=%s' % (
                 self.gds_format_string(quote_attrib(self.EntityTypeReference).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='EntityTypeReference'),))
+=======
+            self.gds_format_string(quote_attrib(self.Strength).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='Strength'),))
+        if self.StrengthReference is not None and 'StrengthReference' not in already_processed:
+            already_processed.add('StrengthReference')
+            outfile.write(' StrengthReference=%s' % (
+            self.gds_format_string(quote_attrib(self.StrengthReference).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='StrengthReference'),))
+        if self.EntityTypeReference is not None and 'EntityTypeReference' not in already_processed:
+            already_processed.add('EntityTypeReference')
+            outfile.write(' EntityTypeReference=%s' % (
+            self.gds_format_string(quote_attrib(self.EntityTypeReference).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='EntityTypeReference'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         if self.FillStyle is not None and 'FillStyle' not in already_processed:
             already_processed.add('FillStyle')
             outfile.write(' FillStyle=%s' % (quote_attrib(self.FillStyle),))
@@ -2699,8 +2807,13 @@ class BoxStyle(GeneratedsSuper):
         if self.Type is not None and 'Type' not in already_processed:
             already_processed.add('Type')
             outfile.write(' Type=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.Type).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='Type'),))
+=======
+            self.gds_format_string(quote_attrib(self.Type).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='Type'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         if self.Filled is not None and 'Filled' not in already_processed:
             already_processed.add('Filled')
             outfile.write(' Filled="%s"' % self.gds_format_boolean(self.Filled, input_name='Filled'))
@@ -3022,6 +3135,7 @@ class Card(GeneratedsSuper):
         if self.GradeTwoReference is not None and 'GradeTwoReference' not in already_processed:
             already_processed.add('GradeTwoReference')
             outfile.write(' GradeTwoReference=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.GradeTwoReference).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='GradeTwoReference'),))
         if self.Text is not None and 'Text' not in already_processed:
@@ -3029,6 +3143,15 @@ class Card(GeneratedsSuper):
             outfile.write(' Text=%s' % (
                 self.gds_format_string(quote_attrib(self.Text).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='Text'),))
+=======
+            self.gds_format_string(quote_attrib(self.GradeTwoReference).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='GradeTwoReference'),))
+        if self.Text is not None and 'Text' not in already_processed:
+            already_processed.add('Text')
+            outfile.write(' Text=%s' % (
+            self.gds_format_string(quote_attrib(self.Text).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='Text'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         if self.GradeTwoIndex is not None and 'GradeTwoIndex' not in already_processed:
             already_processed.add('GradeTwoIndex')
             outfile.write(
@@ -3036,14 +3159,20 @@ class Card(GeneratedsSuper):
         if self.GradeThreeReference is not None and 'GradeThreeReference' not in already_processed:
             already_processed.add('GradeThreeReference')
             outfile.write(' GradeThreeReference=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.GradeThreeReference).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='GradeThreeReference'),))
+=======
+            self.gds_format_string(quote_attrib(self.GradeThreeReference).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='GradeThreeReference'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         if self.DateTime is not None and 'DateTime' not in already_processed:
             already_processed.add('DateTime')
             outfile.write(' DateTime="%s"' % self.gds_format_datetime(self.DateTime, input_name='DateTime'))
         if self.DateTimeDescription is not None and 'DateTimeDescription' not in already_processed:
             already_processed.add('DateTimeDescription')
             outfile.write(' DateTimeDescription=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.DateTimeDescription).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='DateTimeDescription'),))
         if self.SourceReference is not None and 'SourceReference' not in already_processed:
@@ -3056,12 +3185,27 @@ class Card(GeneratedsSuper):
             outfile.write(' SourceType=%s' % (
                 self.gds_format_string(quote_attrib(self.SourceType).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='SourceType'),))
+=======
+            self.gds_format_string(quote_attrib(self.DateTimeDescription).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='DateTimeDescription'),))
+        if self.SourceReference is not None and 'SourceReference' not in already_processed:
+            already_processed.add('SourceReference')
+            outfile.write(' SourceReference=%s' % (
+            self.gds_format_string(quote_attrib(self.SourceReference).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='SourceReference'),))
+        if self.SourceType is not None and 'SourceType' not in already_processed:
+            already_processed.add('SourceType')
+            outfile.write(' SourceType=%s' % (
+            self.gds_format_string(quote_attrib(self.SourceType).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='SourceType'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         if self.GradeThreeIndex is not None and 'GradeThreeIndex' not in already_processed:
             already_processed.add('GradeThreeIndex')
             outfile.write(
                 ' GradeThreeIndex="%s"' % self.gds_format_integer(self.GradeThreeIndex, input_name='GradeThreeIndex'))
         if self.Summary is not None and 'Summary' not in already_processed:
             already_processed.add('Summary')
+<<<<<<< HEAD
             outfile.write(' Summary=%s' % (self.gds_format_string(
                 quote_attrib(self.Summary).encode(ExternalEncoding).decode("utf-8"), input_name='Summary'),))
         if self.GradeOneReference is not None and 'GradeOneReference' not in already_processed:
@@ -3069,6 +3213,16 @@ class Card(GeneratedsSuper):
             outfile.write(' GradeOneReference=%s' % (
                 self.gds_format_string(quote_attrib(self.GradeOneReference).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='GradeOneReference'),))
+=======
+            outfile.write(' Summary=%s' % (
+            self.gds_format_string(quote_attrib(self.Summary).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='Summary'),))
+        if self.GradeOneReference is not None and 'GradeOneReference' not in already_processed:
+            already_processed.add('GradeOneReference')
+            outfile.write(' GradeOneReference=%s' % (
+            self.gds_format_string(quote_attrib(self.GradeOneReference).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='GradeOneReference'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
 
     def exportChildren(self, outfile, level, namespace_='', name_='Card', fromsubclass_=False, pretty_print=True):
         if pretty_print:
@@ -3580,17 +3734,27 @@ class CustomImage(GeneratedsSuper):
             outfile.write(' Data=%s' % (quote_attrib(self.Data),))
         if self.Id is not None and 'Id' not in already_processed:
             already_processed.add('Id')
+<<<<<<< HEAD
             outfile.write(
                 ' Id=%s' % (self.gds_format_string(quote_attrib(self.Id).encode(ExternalEncoding).decode("utf-8"),
                                                    input_name='Id'),))
+=======
+            outfile.write(' Id=%s' % (
+            self.gds_format_string(quote_attrib(self.Id).encode(ExternalEncoding).decode('utf-8'), input_name='Id'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         if self.DataLength is not None and 'DataLength' not in already_processed:
             already_processed.add('DataLength')
             outfile.write(' DataLength="%s"' % self.gds_format_integer(self.DataLength, input_name='DataLength'))
         if self.DataGuid is not None and 'DataGuid' not in already_processed:
             already_processed.add('DataGuid')
             outfile.write(' DataGuid=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.DataGuid).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='DataGuid'),))
+=======
+            self.gds_format_string(quote_attrib(self.DataGuid).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='DataGuid'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
 
     def exportChildren(self, outfile, level, namespace_='', name_='CustomImage', fromsubclass_=False,
                        pretty_print=True):
@@ -3848,8 +4012,13 @@ class PropertyBag(GeneratedsSuper):
         if self.GuidID is not None and 'GuidID' not in already_processed:
             already_processed.add('GuidID')
             outfile.write(' GuidID=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.GuidID).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='GuidID'),))
+=======
+            self.gds_format_string(quote_attrib(self.GuidID).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='GuidID'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
 
     def exportChildren(self, outfile, level, namespace_='', name_='PropertyBag', fromsubclass_=False,
                        pretty_print=True):
@@ -3941,6 +4110,7 @@ class PropertyBagProperty(GeneratedsSuper):
             return PropertyBagProperty(*args_, **kwargs_)
 
     factory = staticmethod(factory)
+<<<<<<< HEAD
 
     def get_DataType(self):
         return self.DataType
@@ -3992,6 +4162,52 @@ class PropertyBagProperty(GeneratedsSuper):
                 self.Data is not None or
                 self.ValueIsIDispatch is not None
 
+=======
+
+    def get_DataType(self):
+        return self.DataType
+
+    def set_DataType(self, DataType):
+        self.DataType = DataType
+
+    def get_PropertyName(self):
+        return self.PropertyName
+
+    def set_PropertyName(self, PropertyName):
+        self.PropertyName = PropertyName
+
+    def get_DataGuid(self):
+        return self.DataGuid
+
+    def set_DataGuid(self, DataGuid):
+        self.DataGuid = DataGuid
+
+    def get_DataLength(self):
+        return self.DataLength
+
+    def set_DataLength(self, DataLength):
+        self.DataLength = DataLength
+
+    def get_Data(self):
+        return self.Data
+
+    def set_Data(self, Data):
+        self.Data = Data
+
+    def get_ValueIsIDispatch(self):
+        return self.ValueIsIDispatch
+
+    def set_ValueIsIDispatch(self, ValueIsIDispatch):
+        self.ValueIsIDispatch = ValueIsIDispatch
+
+    def validate_PropertyBagDataType(self, value):
+        # Validate type PropertyBagDataType, a restriction on xsd:string.
+        pass
+
+    def hasContent_(self):
+        if (
+
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         ):
             return True
         else:
@@ -4023,6 +4239,7 @@ class PropertyBagProperty(GeneratedsSuper):
         if self.PropertyName is not None and 'PropertyName' not in already_processed:
             already_processed.add('PropertyName')
             outfile.write(' PropertyName=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.PropertyName).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='PropertyName'),))
         if self.DataGuid is not None and 'DataGuid' not in already_processed:
@@ -4030,14 +4247,28 @@ class PropertyBagProperty(GeneratedsSuper):
             outfile.write(' DataGuid=%s' % (
                 self.gds_format_string(quote_attrib(self.DataGuid).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='DataGuid'),))
+=======
+            self.gds_format_string(quote_attrib(self.PropertyName).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='PropertyName'),))
+        if self.DataGuid is not None and 'DataGuid' not in already_processed:
+            already_processed.add('DataGuid')
+            outfile.write(' DataGuid=%s' % (
+            self.gds_format_string(quote_attrib(self.DataGuid).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='DataGuid'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         if self.DataLength is not None and 'DataLength' not in already_processed:
             already_processed.add('DataLength')
             outfile.write(' DataLength="%s"' % self.gds_format_integer(self.DataLength, input_name='DataLength'))
         if self.Data is not None and 'Data' not in already_processed:
             already_processed.add('Data')
             outfile.write(' Data=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.Data).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='Data'),))
+=======
+            self.gds_format_string(quote_attrib(self.Data).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='Data'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         if self.ValueIsIDispatch is not None and 'ValueIsIDispatch' not in already_processed:
             already_processed.add('ValueIsIDispatch')
             outfile.write(' ValueIsIDispatch="%s"' % self.gds_format_boolean(self.ValueIsIDispatch,
@@ -5065,6 +5296,7 @@ class Chart(GeneratedsSuper):
         if self.MsxmlVersion is not None and 'MsxmlVersion' not in already_processed:
             already_processed.add('MsxmlVersion')
             outfile.write(' MsxmlVersion=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.MsxmlVersion).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='MsxmlVersion'),))
         if self.SchemaVersion is not None and 'SchemaVersion' not in already_processed:
@@ -5072,6 +5304,15 @@ class Chart(GeneratedsSuper):
             outfile.write(' SchemaVersion=%s' % (
                 self.gds_format_string(quote_attrib(self.SchemaVersion).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='SchemaVersion'),))
+=======
+            self.gds_format_string(quote_attrib(self.MsxmlVersion).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='MsxmlVersion'),))
+        if self.SchemaVersion is not None and 'SchemaVersion' not in already_processed:
+            already_processed.add('SchemaVersion')
+            outfile.write(' SchemaVersion=%s' % (
+            self.gds_format_string(quote_attrib(self.SchemaVersion).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='SchemaVersion'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         if self.CoverSheetShowOnOpen is not None and 'CoverSheetShowOnOpen' not in already_processed:
             already_processed.add('CoverSheetShowOnOpen')
             outfile.write(' CoverSheetShowOnOpen="%s"' % self.gds_format_boolean(self.CoverSheetShowOnOpen,
@@ -6318,6 +6559,7 @@ class ChartItem(GeneratedsSuper):
         if self.Description is not None and 'Description' not in already_processed:
             already_processed.add('Description')
             outfile.write(' Description=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.Description).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='Description'),))
         if self.GroupReference is not None and 'GroupReference' not in already_processed:
@@ -6325,6 +6567,15 @@ class ChartItem(GeneratedsSuper):
             outfile.write(' GroupReference=%s' % (
                 self.gds_format_string(quote_attrib(self.GroupReference).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='GroupReference'),))
+=======
+            self.gds_format_string(quote_attrib(self.Description).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='Description'),))
+        if self.GroupReference is not None and 'GroupReference' not in already_processed:
+            already_processed.add('GroupReference')
+            outfile.write(' GroupReference=%s' % (
+            self.gds_format_string(quote_attrib(self.GroupReference).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='GroupReference'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         if self.GradeTwoIndex is not None and 'GradeTwoIndex' not in already_processed:
             already_processed.add('GradeTwoIndex')
             outfile.write(
@@ -6335,6 +6586,7 @@ class ChartItem(GeneratedsSuper):
         if self.GradeTwoReference is not None and 'GradeTwoReference' not in already_processed:
             already_processed.add('GradeTwoReference')
             outfile.write(' GradeTwoReference=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.GradeTwoReference).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='GradeTwoReference'),))
         if self.GradeThreeReference is not None and 'GradeThreeReference' not in already_processed:
@@ -6342,12 +6594,22 @@ class ChartItem(GeneratedsSuper):
             outfile.write(' GradeThreeReference=%s' % (
                 self.gds_format_string(quote_attrib(self.GradeThreeReference).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='GradeThreeReference'),))
+=======
+            self.gds_format_string(quote_attrib(self.GradeTwoReference).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='GradeTwoReference'),))
+        if self.GradeThreeReference is not None and 'GradeThreeReference' not in already_processed:
+            already_processed.add('GradeThreeReference')
+            outfile.write(' GradeThreeReference=%s' % (
+            self.gds_format_string(quote_attrib(self.GradeThreeReference).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='GradeThreeReference'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         if self.DateTime is not None and 'DateTime' not in already_processed:
             already_processed.add('DateTime')
             outfile.write(' DateTime="%s"' % self.gds_format_datetime(self.DateTime, input_name='DateTime'))
         if self.DateTimeDescription is not None and 'DateTimeDescription' not in already_processed:
             already_processed.add('DateTimeDescription')
             outfile.write(' DateTimeDescription=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.DateTimeDescription).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='DateTimeDescription'),))
         if self.SourceReference is not None and 'SourceReference' not in already_processed:
@@ -6360,6 +6622,20 @@ class ChartItem(GeneratedsSuper):
             outfile.write(' SourceType=%s' % (
                 self.gds_format_string(quote_attrib(self.SourceType).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='SourceType'),))
+=======
+            self.gds_format_string(quote_attrib(self.DateTimeDescription).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='DateTimeDescription'),))
+        if self.SourceReference is not None and 'SourceReference' not in already_processed:
+            already_processed.add('SourceReference')
+            outfile.write(' SourceReference=%s' % (
+            self.gds_format_string(quote_attrib(self.SourceReference).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='SourceReference'),))
+        if self.SourceType is not None and 'SourceType' not in already_processed:
+            already_processed.add('SourceType')
+            outfile.write(' SourceType=%s' % (
+            self.gds_format_string(quote_attrib(self.SourceType).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='SourceType'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         if self.GradeThreeIndex is not None and 'GradeThreeIndex' not in already_processed:
             already_processed.add('GradeThreeIndex')
             outfile.write(
@@ -6373,13 +6649,19 @@ class ChartItem(GeneratedsSuper):
         if self.Label is not None and 'Label' not in already_processed:
             already_processed.add('Label')
             outfile.write(' Label=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.Label).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='Label'),))
+=======
+            self.gds_format_string(quote_attrib(self.Label).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='Label'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         if self.XPosition is not None and 'XPosition' not in already_processed:
             already_processed.add('XPosition')
             outfile.write(' XPosition="%s"' % self.gds_format_integer(self.XPosition, input_name='XPosition'))
         if self.Id is not None and 'Id' not in already_processed:
             already_processed.add('Id')
+<<<<<<< HEAD
             outfile.write(
                 ' Id=%s' % (self.gds_format_string(quote_attrib(self.Id).encode(ExternalEncoding).decode("utf-8"),
                                                    input_name='Id'),))
@@ -6388,6 +6670,15 @@ class ChartItem(GeneratedsSuper):
             outfile.write(' GradeOneReference=%s' % (
                 self.gds_format_string(quote_attrib(self.GradeOneReference).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='GradeOneReference'),))
+=======
+            outfile.write(' Id=%s' % (
+            self.gds_format_string(quote_attrib(self.Id).encode(ExternalEncoding).decode('utf-8'), input_name='Id'),))
+        if self.GradeOneReference is not None and 'GradeOneReference' not in already_processed:
+            already_processed.add('GradeOneReference')
+            outfile.write(' GradeOneReference=%s' % (
+            self.gds_format_string(quote_attrib(self.GradeOneReference).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='GradeOneReference'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
 
     def exportChildren(self, outfile, level, namespace_='', name_='ChartItem', fromsubclass_=False, pretty_print=True):
         if pretty_print:
@@ -7094,6 +7385,7 @@ class CircleStyle(GeneratedsSuper):
         if self.Strength is not None and 'Strength' not in already_processed:
             already_processed.add('Strength')
             outfile.write(' Strength=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.Strength).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='Strength'),))
         if self.StrengthReference is not None and 'StrengthReference' not in already_processed:
@@ -7106,6 +7398,20 @@ class CircleStyle(GeneratedsSuper):
             outfile.write(' EntityTypeReference=%s' % (
                 self.gds_format_string(quote_attrib(self.EntityTypeReference).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='EntityTypeReference'),))
+=======
+            self.gds_format_string(quote_attrib(self.Strength).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='Strength'),))
+        if self.StrengthReference is not None and 'StrengthReference' not in already_processed:
+            already_processed.add('StrengthReference')
+            outfile.write(' StrengthReference=%s' % (
+            self.gds_format_string(quote_attrib(self.StrengthReference).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='StrengthReference'),))
+        if self.EntityTypeReference is not None and 'EntityTypeReference' not in already_processed:
+            already_processed.add('EntityTypeReference')
+            outfile.write(' EntityTypeReference=%s' % (
+            self.gds_format_string(quote_attrib(self.EntityTypeReference).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='EntityTypeReference'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         if self.FillStyle is not None and 'FillStyle' not in already_processed:
             already_processed.add('FillStyle')
             outfile.write(' FillStyle=%s' % (quote_attrib(self.FillStyle),))
@@ -7121,8 +7427,13 @@ class CircleStyle(GeneratedsSuper):
         if self.Type is not None and 'Type' not in already_processed:
             already_processed.add('Type')
             outfile.write(' Type=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.Type).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='Type'),))
+=======
+            self.gds_format_string(quote_attrib(self.Type).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='Type'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         if self.Filled is not None and 'Filled' not in already_processed:
             already_processed.add('Filled')
             outfile.write(' Filled="%s"' % self.gds_format_boolean(self.Filled, input_name='Filled'))
@@ -7399,6 +7710,7 @@ class CIStyle(GeneratedsSuper):
         if self.DateTimeFormat is not None and 'DateTimeFormat' not in already_processed:
             already_processed.add('DateTimeFormat')
             outfile.write(' DateTimeFormat=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.DateTimeFormat).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='DateTimeFormat'),))
         if self.DateTimeFormatReference is not None and 'DateTimeFormatReference' not in already_processed:
@@ -7407,6 +7719,15 @@ class CIStyle(GeneratedsSuper):
                 self.gds_format_string(
                     quote_attrib(self.DateTimeFormatReference).encode(ExternalEncoding).decode("utf-8"),
                     input_name='DateTimeFormatReference'),))
+=======
+            self.gds_format_string(quote_attrib(self.DateTimeFormat).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='DateTimeFormat'),))
+        if self.DateTimeFormatReference is not None and 'DateTimeFormatReference' not in already_processed:
+            already_processed.add('DateTimeFormatReference')
+            outfile.write(' DateTimeFormatReference=%s' % (
+            self.gds_format_string(quote_attrib(self.DateTimeFormatReference).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='DateTimeFormatReference'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
 
     def exportChildren(self, outfile, level, namespace_='', name_='CIStyle', fromsubclass_=False, pretty_print=True):
         if pretty_print:
@@ -7595,9 +7916,14 @@ class Connection(GeneratedsSuper):
     def exportAttributes(self, outfile, level, already_processed, namespace_='', name_='Connection'):
         if self.Id is not None and 'Id' not in already_processed:
             already_processed.add('Id')
+<<<<<<< HEAD
             outfile.write(
                 ' Id=%s' % (self.gds_format_string(quote_attrib(self.Id).encode(ExternalEncoding).decode("utf-8"),
                                                    input_name='Id'),))
+=======
+            outfile.write(' Id=%s' % (
+            self.gds_format_string(quote_attrib(self.Id).encode(ExternalEncoding).decode('utf-8'), input_name='Id'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
 
     def exportChildren(self, outfile, level, namespace_='', name_='Connection', fromsubclass_=False, pretty_print=True):
         if pretty_print:
@@ -8010,8 +8336,13 @@ class Corner(GeneratedsSuper):
         if self.GroupReference is not None and 'GroupReference' not in already_processed:
             already_processed.add('GroupReference')
             outfile.write(' GroupReference=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.GroupReference).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='GroupReference'),))
+=======
+            self.gds_format_string(quote_attrib(self.GroupReference).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='GroupReference'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
 
     def exportChildren(self, outfile, level, namespace_='', name_='Corner', fromsubclass_=False, pretty_print=True):
         pass
@@ -9702,6 +10033,7 @@ class CustomProperty(GeneratedsSuper):
         if self.Name is not None and 'Name' not in already_processed:
             already_processed.add('Name')
             outfile.write(' Name=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.Name).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='Name'),))
         if self.Value is not None and 'Value' not in already_processed:
@@ -9709,6 +10041,15 @@ class CustomProperty(GeneratedsSuper):
             outfile.write(' Value=%s' % (
                 self.gds_format_string(quote_attrib(self.Value).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='Value'),))
+=======
+            self.gds_format_string(quote_attrib(self.Name).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='Name'),))
+        if self.Value is not None and 'Value' not in already_processed:
+            already_processed.add('Value')
+            outfile.write(' Value=%s' % (
+            self.gds_format_string(quote_attrib(self.Value).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='Value'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
 
     def exportChildren(self, outfile, level, namespace_='', name_='CustomProperty', fromsubclass_=False,
                        pretty_print=True):
@@ -10000,6 +10341,7 @@ class DatabaseKey(GeneratedsSuper):
         if self.DatabaseObject is not None and 'DatabaseObject' not in already_processed:
             already_processed.add('DatabaseObject')
             outfile.write(' DatabaseObject=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.DatabaseObject).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='DatabaseObject'),))
         if self.DatabaseProxyInstanceName is not None and 'DatabaseProxyInstanceName' not in already_processed:
@@ -10025,6 +10367,30 @@ class DatabaseKey(GeneratedsSuper):
                 self.gds_format_string(
                     quote_attrib(self.DatabaseProxyReference).encode(ExternalEncoding).decode("utf-8"),
                     input_name='DatabaseProxyReference'),))
+=======
+            self.gds_format_string(quote_attrib(self.DatabaseObject).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='DatabaseObject'),))
+        if self.DatabaseProxyInstanceName is not None and 'DatabaseProxyInstanceName' not in already_processed:
+            already_processed.add('DatabaseProxyInstanceName')
+            outfile.write(' DatabaseProxyInstanceName=%s' % (self.gds_format_string(
+                quote_attrib(self.DatabaseProxyInstanceName).encode(ExternalEncoding).decode('utf-8'),
+                input_name='DatabaseProxyInstanceName'),))
+        if self.DatabaseProxyClassID is not None and 'DatabaseProxyClassID' not in already_processed:
+            already_processed.add('DatabaseProxyClassID')
+            outfile.write(' DatabaseProxyClassID=%s' % (
+            self.gds_format_string(quote_attrib(self.DatabaseProxyClassID).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='DatabaseProxyClassID'),))
+        if self.DatabaseObjectProxyReference is not None and 'DatabaseObjectProxyReference' not in already_processed:
+            already_processed.add('DatabaseObjectProxyReference')
+            outfile.write(' DatabaseObjectProxyReference=%s' % (self.gds_format_string(
+                quote_attrib(self.DatabaseObjectProxyReference).encode(ExternalEncoding).decode('utf-8'),
+                input_name='DatabaseObjectProxyReference'),))
+        if self.DatabaseProxyReference is not None and 'DatabaseProxyReference' not in already_processed:
+            already_processed.add('DatabaseProxyReference')
+            outfile.write(' DatabaseProxyReference=%s' % (
+            self.gds_format_string(quote_attrib(self.DatabaseProxyReference).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='DatabaseProxyReference'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
 
     def exportChildren(self, outfile, level, namespace_='', name_='DatabaseKey', fromsubclass_=False,
                        pretty_print=True):
@@ -10367,14 +10733,20 @@ class DatabaseObjectProxy(GeneratedsSuper):
         if self.Name is not None and 'Name' not in already_processed:
             already_processed.add('Name')
             outfile.write(' Name=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.Name).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='Name'),))
+=======
+            self.gds_format_string(quote_attrib(self.Name).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='Name'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         if self.SemanticTypeGuid is not None and 'SemanticTypeGuid' not in already_processed:
             already_processed.add('SemanticTypeGuid')
             outfile.write(' SemanticTypeGuid=%s' % (quote_attrib(self.SemanticTypeGuid),))
         if self.PreferredTypeReference is not None and 'PreferredTypeReference' not in already_processed:
             already_processed.add('PreferredTypeReference')
             outfile.write(' PreferredTypeReference=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(
                     quote_attrib(self.PreferredTypeReference).encode(ExternalEncoding).decode("utf-8"),
                     input_name='PreferredTypeReference'),))
@@ -10399,6 +10771,29 @@ class DatabaseObjectProxy(GeneratedsSuper):
                 self.gds_format_string(
                     quote_attrib(self.DatabaseProxyReference).encode(ExternalEncoding).decode("utf-8"),
                     input_name='DatabaseProxyReference'),))
+=======
+            self.gds_format_string(quote_attrib(self.PreferredTypeReference).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='PreferredTypeReference'),))
+        if self.PreferredType is not None and 'PreferredType' not in already_processed:
+            already_processed.add('PreferredType')
+            outfile.write(' PreferredType=%s' % (
+            self.gds_format_string(quote_attrib(self.PreferredType).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='PreferredType'),))
+        if self.ParentProxy is not None and 'ParentProxy' not in already_processed:
+            already_processed.add('ParentProxy')
+            outfile.write(' ParentProxy=%s' % (
+            self.gds_format_string(quote_attrib(self.ParentProxy).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='ParentProxy'),))
+        if self.Id is not None and 'Id' not in already_processed:
+            already_processed.add('Id')
+            outfile.write(' Id=%s' % (
+            self.gds_format_string(quote_attrib(self.Id).encode(ExternalEncoding).decode('utf-8'), input_name='Id'),))
+        if self.DatabaseProxyReference is not None and 'DatabaseProxyReference' not in already_processed:
+            already_processed.add('DatabaseProxyReference')
+            outfile.write(' DatabaseProxyReference=%s' % (
+            self.gds_format_string(quote_attrib(self.DatabaseProxyReference).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='DatabaseProxyReference'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
 
     def exportChildren(self, outfile, level, namespace_='', name_='DatabaseObjectProxy', fromsubclass_=False,
                        pretty_print=True):
@@ -10610,6 +11005,7 @@ class DatabaseProperty(GeneratedsSuper):
             outfile.write(' Visible="%s"' % self.gds_format_boolean(self.Visible, input_name='Visible'))
         if self.DatabasePropertyTypeReference is not None and 'DatabasePropertyTypeReference' not in already_processed:
             already_processed.add('DatabasePropertyTypeReference')
+<<<<<<< HEAD
             outfile.write(' DatabasePropertyTypeReference=%s' % (
                 self.gds_format_string(
                     quote_attrib(self.DatabasePropertyTypeReference).encode(ExternalEncoding).decode("utf-8"),
@@ -10619,6 +11015,16 @@ class DatabaseProperty(GeneratedsSuper):
             outfile.write(' DatabasePropertyType=%s' % (
                 self.gds_format_string(quote_attrib(self.DatabasePropertyType).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='DatabasePropertyType'),))
+=======
+            outfile.write(' DatabasePropertyTypeReference=%s' % (self.gds_format_string(
+                quote_attrib(self.DatabasePropertyTypeReference).encode(ExternalEncoding).decode('utf-8'),
+                input_name='DatabasePropertyTypeReference'),))
+        if self.DatabasePropertyType is not None and 'DatabasePropertyType' not in already_processed:
+            already_processed.add('DatabasePropertyType')
+            outfile.write(' DatabasePropertyType=%s' % (
+            self.gds_format_string(quote_attrib(self.DatabasePropertyType).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='DatabasePropertyType'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         if self.Value is not None and 'Value' not in already_processed:
             already_processed.add('Value')
             outfile.write(' Value=%s' % (quote_attrib(self.Value),))
@@ -10947,8 +11353,13 @@ class DatabasePropertyType(GeneratedsSuper):
         if self.Name is not None and 'Name' not in already_processed:
             already_processed.add('Name')
             outfile.write(' Name=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.Name).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='Name'),))
+=======
+            self.gds_format_string(quote_attrib(self.Name).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='Name'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         if self.DataType is not None and 'DataType' not in already_processed:
             already_processed.add('DataType')
             outfile.write(' DataType=%s' % (quote_attrib(self.DataType),))
@@ -10957,9 +11368,14 @@ class DatabasePropertyType(GeneratedsSuper):
             outfile.write(' SemanticTypeGuid=%s' % (quote_attrib(self.SemanticTypeGuid),))
         if self.Id is not None and 'Id' not in already_processed:
             already_processed.add('Id')
+<<<<<<< HEAD
             outfile.write(
                 ' Id=%s' % (self.gds_format_string(quote_attrib(self.Id).encode(ExternalEncoding).decode("utf-8"),
                                                    input_name='Id'),))
+=======
+            outfile.write(' Id=%s' % (
+            self.gds_format_string(quote_attrib(self.Id).encode(ExternalEncoding).decode('utf-8'), input_name='Id'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
 
     def exportChildren(self, outfile, level, namespace_='', name_='DatabasePropertyType', fromsubclass_=False,
                        pretty_print=True):
@@ -11321,6 +11737,7 @@ class DatabaseProxy(GeneratedsSuper):
         if self.ClassID is not None and 'ClassID' not in already_processed:
             already_processed.add('ClassID')
             outfile.write(' ClassID=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.ClassID).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='ClassID'),))
         if self.ConnectString is not None and 'ConnectString' not in already_processed:
@@ -11333,6 +11750,20 @@ class DatabaseProxy(GeneratedsSuper):
             outfile.write(' DisplayName=%s' % (
                 self.gds_format_string(quote_attrib(self.DisplayName).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='DisplayName'),))
+=======
+            self.gds_format_string(quote_attrib(self.ClassID).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='ClassID'),))
+        if self.ConnectString is not None and 'ConnectString' not in already_processed:
+            already_processed.add('ConnectString')
+            outfile.write(' ConnectString=%s' % (
+            self.gds_format_string(quote_attrib(self.ConnectString).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='ConnectString'),))
+        if self.DisplayName is not None and 'DisplayName' not in already_processed:
+            already_processed.add('DisplayName')
+            outfile.write(' DisplayName=%s' % (
+            self.gds_format_string(quote_attrib(self.DisplayName).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='DisplayName'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         if self.MultipleKeysEnabled is not None and 'MultipleKeysEnabled' not in already_processed:
             already_processed.add('MultipleKeysEnabled')
             outfile.write(' MultipleKeysEnabled="%s"' % self.gds_format_boolean(self.MultipleKeysEnabled,
@@ -11340,6 +11771,7 @@ class DatabaseProxy(GeneratedsSuper):
         if self.ClassName is not None and 'ClassName' not in already_processed:
             already_processed.add('ClassName')
             outfile.write(' ClassName=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.ClassName).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='ClassName'),))
         if self.InstanceName is not None and 'InstanceName' not in already_processed:
@@ -11352,6 +11784,19 @@ class DatabaseProxy(GeneratedsSuper):
             outfile.write(
                 ' Id=%s' % (self.gds_format_string(quote_attrib(self.Id).encode(ExternalEncoding).decode("utf-8"),
                                                    input_name='Id'),))
+=======
+            self.gds_format_string(quote_attrib(self.ClassName).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='ClassName'),))
+        if self.InstanceName is not None and 'InstanceName' not in already_processed:
+            already_processed.add('InstanceName')
+            outfile.write(' InstanceName=%s' % (
+            self.gds_format_string(quote_attrib(self.InstanceName).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='InstanceName'),))
+        if self.Id is not None and 'Id' not in already_processed:
+            already_processed.add('Id')
+            outfile.write(' Id=%s' % (
+            self.gds_format_string(quote_attrib(self.Id).encode(ExternalEncoding).decode('utf-8'), input_name='Id'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
 
     def exportChildren(self, outfile, level, namespace_='', name_='DatabaseProxy', fromsubclass_=False,
                        pretty_print=True):
@@ -11677,6 +12122,7 @@ class DateTimeFormat(GeneratedsSuper):
         if self.Name is not None and 'Name' not in already_processed:
             already_processed.add('Name')
             outfile.write(' Name=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.Name).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='Name'),))
         if self.Id is not None and 'Id' not in already_processed:
@@ -11689,6 +12135,19 @@ class DateTimeFormat(GeneratedsSuper):
             outfile.write(' Format=%s' % (
                 self.gds_format_string(quote_attrib(self.Format).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='Format'),))
+=======
+            self.gds_format_string(quote_attrib(self.Name).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='Name'),))
+        if self.Id is not None and 'Id' not in already_processed:
+            already_processed.add('Id')
+            outfile.write(' Id=%s' % (
+            self.gds_format_string(quote_attrib(self.Id).encode(ExternalEncoding).decode('utf-8'), input_name='Id'),))
+        if self.Format is not None and 'Format' not in already_processed:
+            already_processed.add('Format')
+            outfile.write(' Format=%s' % (
+            self.gds_format_string(quote_attrib(self.Format).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='Format'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
 
     def exportChildren(self, outfile, level, namespace_='', name_='DateTimeFormat', fromsubclass_=False,
                        pretty_print=True):
@@ -12212,16 +12671,26 @@ class Entity(GeneratedsSuper):
         if self.EntityId is not None and 'EntityId' not in already_processed:
             already_processed.add('EntityId')
             outfile.write(' EntityId=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.EntityId).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='EntityId'),))
+=======
+            self.gds_format_string(quote_attrib(self.EntityId).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='EntityId'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         if self.SemanticTypeGuid is not None and 'SemanticTypeGuid' not in already_processed:
             already_processed.add('SemanticTypeGuid')
             outfile.write(' SemanticTypeGuid=%s' % (quote_attrib(self.SemanticTypeGuid),))
         if self.Identity is not None and 'Identity' not in already_processed:
             already_processed.add('Identity')
             outfile.write(' Identity=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.Identity).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='Identity'),))
+=======
+            self.gds_format_string(quote_attrib(self.Identity).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='Identity'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         if self.LabelIsIdentity is not None and 'LabelIsIdentity' not in already_processed:
             already_processed.add('LabelIsIdentity')
             outfile.write(
@@ -12647,8 +13116,13 @@ class EntityType(GeneratedsSuper):
         if self.Name is not None and 'Name' not in already_processed:
             already_processed.add('Name')
             outfile.write(' Name=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.Name).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='Name'),))
+=======
+            self.gds_format_string(quote_attrib(self.Name).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='Name'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         if self.Colour is not None and 'Colour' not in already_processed:
             already_processed.add('Colour')
             outfile.write(' Colour="%s"' % self.gds_format_integer(self.Colour, input_name='Colour'))
@@ -12658,8 +13132,13 @@ class EntityType(GeneratedsSuper):
         if self.IconFile is not None and 'IconFile' not in already_processed:
             already_processed.add('IconFile')
             outfile.write(' IconFile=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.IconFile).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='IconFile'),))
+=======
+            self.gds_format_string(quote_attrib(self.IconFile).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='IconFile'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         if self.PreferredRepresentation is not None and 'PreferredRepresentation' not in already_processed:
             already_processed.add('PreferredRepresentation')
             outfile.write(' PreferredRepresentation=%s' % (quote_attrib(self.PreferredRepresentation),))
@@ -12669,9 +13148,14 @@ class EntityType(GeneratedsSuper):
                                                                               input_name='IconShadingColour'))
         if self.Id is not None and 'Id' not in already_processed:
             already_processed.add('Id')
+<<<<<<< HEAD
             outfile.write(
                 ' Id=%s' % (self.gds_format_string(quote_attrib(self.Id).encode(ExternalEncoding).decode("utf-8"),
                                                    input_name='Id'),))
+=======
+            outfile.write(' Id=%s' % (
+            self.gds_format_string(quote_attrib(self.Id).encode(ExternalEncoding).decode('utf-8'), input_name='Id'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
 
     def exportChildren(self, outfile, level, namespace_='', name_='EntityType', fromsubclass_=False, pretty_print=True):
         pass
@@ -12952,6 +13436,7 @@ class EntityTypeEntry(GeneratedsSuper):
         if self.EntityTypeReference is not None and 'EntityTypeReference' not in already_processed:
             already_processed.add('EntityTypeReference')
             outfile.write(' EntityTypeReference=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.EntityTypeReference).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='EntityTypeReference'),))
         if self.Entity is not None and 'Entity' not in already_processed:
@@ -12959,6 +13444,15 @@ class EntityTypeEntry(GeneratedsSuper):
             outfile.write(' Entity=%s' % (
                 self.gds_format_string(quote_attrib(self.Entity).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='Entity'),))
+=======
+            self.gds_format_string(quote_attrib(self.EntityTypeReference).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='EntityTypeReference'),))
+        if self.Entity is not None and 'Entity' not in already_processed:
+            already_processed.add('Entity')
+            outfile.write(' Entity=%s' % (
+            self.gds_format_string(quote_attrib(self.Entity).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='Entity'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
 
     def exportChildren(self, outfile, level, namespace_='', name_='EntityTypeEntry', fromsubclass_=False,
                        pretty_print=True):
@@ -13464,8 +13958,13 @@ class EventStyle(GeneratedsSuper):
         if self.StrengthReference is not None and 'StrengthReference' not in already_processed:
             already_processed.add('StrengthReference')
             outfile.write(' StrengthReference=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.StrengthReference).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='StrengthReference'),))
+=======
+            self.gds_format_string(quote_attrib(self.StrengthReference).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='StrengthReference'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         if self.LinkAreaVisible is not None and 'LinkAreaVisible' not in already_processed:
             already_processed.add('LinkAreaVisible')
             outfile.write(
@@ -13473,8 +13972,13 @@ class EventStyle(GeneratedsSuper):
         if self.EntityTypeReference is not None and 'EntityTypeReference' not in already_processed:
             already_processed.add('EntityTypeReference')
             outfile.write(' EntityTypeReference=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.EntityTypeReference).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='EntityTypeReference'),))
+=======
+            self.gds_format_string(quote_attrib(self.EntityTypeReference).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='EntityTypeReference'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         if self.FillStyle is not None and 'FillStyle' not in already_processed:
             already_processed.add('FillStyle')
             outfile.write(' FillStyle=%s' % (quote_attrib(self.FillStyle),))
@@ -13493,8 +13997,13 @@ class EventStyle(GeneratedsSuper):
         if self.Strength is not None and 'Strength' not in already_processed:
             already_processed.add('Strength')
             outfile.write(' Strength=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.Strength).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='Strength'),))
+=======
+            self.gds_format_string(quote_attrib(self.Strength).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='Strength'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         if self.TypeNameVisible is not None and 'TypeNameVisible' not in already_processed:
             already_processed.add('TypeNameVisible')
             outfile.write(
@@ -13505,8 +14014,13 @@ class EventStyle(GeneratedsSuper):
         if self.Type is not None and 'Type' not in already_processed:
             already_processed.add('Type')
             outfile.write(' Type=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.Type).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='Type'),))
+=======
+            self.gds_format_string(quote_attrib(self.Type).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='Type'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         if self.IconShadingColour is not None and 'IconShadingColour' not in already_processed:
             already_processed.add('IconShadingColour')
             outfile.write(' IconShadingColour="%s"' % self.gds_format_integer(self.IconShadingColour,
@@ -13817,8 +14331,13 @@ class Field(GeneratedsSuper):
         if self.Field is not None and 'Field' not in already_processed:
             already_processed.add('Field')
             outfile.write(' Field=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.Field).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='Field'),))
+=======
+            self.gds_format_string(quote_attrib(self.Field).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='Field'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         if self.Type is not None and 'Type' not in already_processed:
             already_processed.add('Type')
             outfile.write(' Type=%s' % (quote_attrib(self.Type),))
@@ -14003,7 +14522,11 @@ class Font(GeneratedsSuper):
     subclass = None
     superclass = None
 
+<<<<<<< HEAD
     def __init__(self, Strikeout=False, FaceName='Arial', Bold=False, CharSet='CharSetANSI', Underline=False,
+=======
+    def __init__(self, Strikeout=False, FaceName='Arial', Bold=False, CharSet='CharSetDefault', Underline=False,
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
                  BackColour=16777215, Italic=False, PointSize=8, FontColour=0):
         self.original_tagname_ = None
         self.Strikeout = _cast(bool, Strikeout)
@@ -14117,8 +14640,13 @@ class Font(GeneratedsSuper):
         if self.FaceName is not None and 'FaceName' not in already_processed:
             already_processed.add('FaceName')
             outfile.write(' FaceName=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.FaceName).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='FaceName'),))
+=======
+            self.gds_format_string(quote_attrib(self.FaceName).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='FaceName'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         if self.Bold is not None and 'Bold' not in already_processed:
             already_processed.add('Bold')
             outfile.write(' Bold="%s"' % self.gds_format_boolean(self.Bold, input_name='Bold'))
@@ -14353,8 +14881,13 @@ class Footer(GeneratedsSuper):
         if self.Property is not None and 'Property' not in already_processed:
             already_processed.add('Property')
             outfile.write(' Property=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.Property).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='Property'),))
+=======
+            self.gds_format_string(quote_attrib(self.Property).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='Property'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         if self.Visible is not None and 'Visible' not in already_processed:
             already_processed.add('Visible')
             outfile.write(' Visible="%s"' % self.gds_format_boolean(self.Visible, input_name='Visible'))
@@ -15039,9 +15572,14 @@ class Group(GeneratedsSuper):
     def exportAttributes(self, outfile, level, already_processed, namespace_='', name_='Group'):
         if self.Id is not None and 'Id' not in already_processed:
             already_processed.add('Id')
+<<<<<<< HEAD
             outfile.write(
                 ' Id=%s' % (self.gds_format_string(quote_attrib(self.Id).encode(ExternalEncoding).decode("utf-8"),
                                                    input_name='Id'),))
+=======
+            outfile.write(' Id=%s' % (
+            self.gds_format_string(quote_attrib(self.Id).encode(ExternalEncoding).decode('utf-8'), input_name='Id'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
 
     def exportChildren(self, outfile, level, namespace_='', name_='Group', fromsubclass_=False, pretty_print=True):
         pass
@@ -15278,8 +15816,13 @@ class Header(GeneratedsSuper):
         if self.Property is not None and 'Property' not in already_processed:
             already_processed.add('Property')
             outfile.write(' Property=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.Property).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='Property'),))
+=======
+            self.gds_format_string(quote_attrib(self.Property).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='Property'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         if self.Visible is not None and 'Visible' not in already_processed:
             already_processed.add('Visible')
             outfile.write(' Visible="%s"' % self.gds_format_boolean(self.Visible, input_name='Visible'))
@@ -15709,8 +16252,13 @@ class IconPicture(GeneratedsSuper):
         if self.DataGuid is not None and 'DataGuid' not in already_processed:
             already_processed.add('DataGuid')
             outfile.write(' DataGuid=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.DataGuid).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='DataGuid'),))
+=======
+            self.gds_format_string(quote_attrib(self.DataGuid).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='DataGuid'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         if self.Visible is not None and 'Visible' not in already_processed:
             already_processed.add('Visible')
             outfile.write(' Visible="%s"' % self.gds_format_boolean(self.Visible, input_name='Visible'))
@@ -15927,6 +16475,7 @@ class IconStyle(GeneratedsSuper):
         if self.EntityTypeReference is not None and 'EntityTypeReference' not in already_processed:
             already_processed.add('EntityTypeReference')
             outfile.write(' EntityTypeReference=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.EntityTypeReference).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='EntityTypeReference'),))
         if self.Type is not None and 'Type' not in already_processed:
@@ -15934,6 +16483,15 @@ class IconStyle(GeneratedsSuper):
             outfile.write(' Type=%s' % (
                 self.gds_format_string(quote_attrib(self.Type).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='Type'),))
+=======
+            self.gds_format_string(quote_attrib(self.EntityTypeReference).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='EntityTypeReference'),))
+        if self.Type is not None and 'Type' not in already_processed:
+            already_processed.add('Type')
+            outfile.write(' Type=%s' % (
+            self.gds_format_string(quote_attrib(self.Type).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='Type'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
 
     def exportChildren(self, outfile, level, namespace_='', name_='IconStyle', fromsubclass_=False, pretty_print=True):
         if pretty_print:
@@ -16366,6 +16924,7 @@ class JunctionStyle(GeneratedsSuper):
         if self.Strength is not None and 'Strength' not in already_processed:
             already_processed.add('Strength')
             outfile.write(' Strength=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.Strength).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='Strength'),))
         if self.StrengthReference is not None and 'StrengthReference' not in already_processed:
@@ -16373,6 +16932,15 @@ class JunctionStyle(GeneratedsSuper):
             outfile.write(' StrengthReference=%s' % (
                 self.gds_format_string(quote_attrib(self.StrengthReference).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='StrengthReference'),))
+=======
+            self.gds_format_string(quote_attrib(self.Strength).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='Strength'),))
+        if self.StrengthReference is not None and 'StrengthReference' not in already_processed:
+            already_processed.add('StrengthReference')
+            outfile.write(' StrengthReference=%s' % (
+            self.gds_format_string(quote_attrib(self.StrengthReference).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='StrengthReference'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         if self.ThemeStrengthAfter is not None and 'ThemeStrengthAfter' not in already_processed:
             already_processed.add('ThemeStrengthAfter')
             outfile.write(' ThemeStrengthAfter=%s' % (quote_attrib(self.ThemeStrengthAfter),))
@@ -16542,8 +17110,13 @@ class Key(GeneratedsSuper):
         if self.Item is not None and 'Item' not in already_processed:
             already_processed.add('Item')
             outfile.write(' Item=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.Item).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='Item'),))
+=======
+            self.gds_format_string(quote_attrib(self.Item).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='Item'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
 
     def exportChildren(self, outfile, level, namespace_='', name_='Key', fromsubclass_=False, pretty_print=True):
         pass
@@ -16648,8 +17221,13 @@ class Label(GeneratedsSuper):
         if self.LabelId is not None and 'LabelId' not in already_processed:
             already_processed.add('LabelId')
             outfile.write(' LabelId=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.LabelId).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='LabelId'),))
+=======
+            self.gds_format_string(quote_attrib(self.LabelId).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='LabelId'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
 
     def exportChildren(self, outfile, level, namespace_='', name_='Label', fromsubclass_=False, pretty_print=True):
         if pretty_print:
@@ -17223,6 +17801,7 @@ class LegendItem(GeneratedsSuper):
         if self.Label is not None and 'Label' not in already_processed:
             already_processed.add('Label')
             outfile.write(' Label=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.Label).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='Label'),))
         if self.ImageName is not None and 'ImageName' not in already_processed:
@@ -17230,6 +17809,15 @@ class LegendItem(GeneratedsSuper):
             outfile.write(' ImageName=%s' % (
                 self.gds_format_string(quote_attrib(self.ImageName).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='ImageName'),))
+=======
+            self.gds_format_string(quote_attrib(self.Label).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='Label'),))
+        if self.ImageName is not None and 'ImageName' not in already_processed:
+            already_processed.add('ImageName')
+            outfile.write(' ImageName=%s' % (
+            self.gds_format_string(quote_attrib(self.ImageName).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='ImageName'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         if self.IconShadingColour is not None and 'IconShadingColour' not in already_processed:
             already_processed.add('IconShadingColour')
             outfile.write(' IconShadingColour="%s"' % self.gds_format_integer(self.IconShadingColour,
@@ -17517,6 +18105,7 @@ class Link(GeneratedsSuper):
         if self.End2Reference is not None and 'End2Reference' not in already_processed:
             already_processed.add('End2Reference')
             outfile.write(' End2Reference=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.End2Reference).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='End2Reference'),))
         if self.End1Reference is not None and 'End1Reference' not in already_processed:
@@ -17524,14 +18113,28 @@ class Link(GeneratedsSuper):
             outfile.write(' End1Reference=%s' % (
                 self.gds_format_string(quote_attrib(self.End1Reference).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='End1Reference'),))
+=======
+            self.gds_format_string(quote_attrib(self.End2Reference).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='End2Reference'),))
+        if self.End1Reference is not None and 'End1Reference' not in already_processed:
+            already_processed.add('End1Reference')
+            outfile.write(' End1Reference=%s' % (
+            self.gds_format_string(quote_attrib(self.End1Reference).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='End1Reference'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         if self.SemanticTypeGuid is not None and 'SemanticTypeGuid' not in already_processed:
             already_processed.add('SemanticTypeGuid')
             outfile.write(' SemanticTypeGuid=%s' % (quote_attrib(self.SemanticTypeGuid),))
         if self.End1Id is not None and 'End1Id' not in already_processed:
             already_processed.add('End1Id')
             outfile.write(' End1Id=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.End1Id).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='End1Id'),))
+=======
+            self.gds_format_string(quote_attrib(self.End1Id).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='End1Id'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         if self.LabelSegment is not None and 'LabelSegment' not in already_processed:
             already_processed.add('LabelSegment')
             outfile.write(' LabelSegment="%s"' % self.gds_format_integer(self.LabelSegment, input_name='LabelSegment'))
@@ -17541,16 +18144,26 @@ class Link(GeneratedsSuper):
         if self.End2Id is not None and 'End2Id' not in already_processed:
             already_processed.add('End2Id')
             outfile.write(' End2Id=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.End2Id).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='End2Id'),))
+=======
+            self.gds_format_string(quote_attrib(self.End2Id).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='End2Id'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         if self.Offset is not None and 'Offset' not in already_processed:
             already_processed.add('Offset')
             outfile.write(' Offset="%s"' % self.gds_format_integer(self.Offset, input_name='Offset'))
         if self.ConnectionReference is not None and 'ConnectionReference' not in already_processed:
             already_processed.add('ConnectionReference')
             outfile.write(' ConnectionReference=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.ConnectionReference).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='ConnectionReference'),))
+=======
+            self.gds_format_string(quote_attrib(self.ConnectionReference).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='ConnectionReference'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
 
     def exportChildren(self, outfile, level, namespace_='', name_='Link', fromsubclass_=False, pretty_print=True):
         if pretty_print:
@@ -17873,6 +18486,74 @@ class LinkStyle(GeneratedsSuper):
             return LinkStyle(*args_, **kwargs_)
 
     factory = staticmethod(factory)
+<<<<<<< HEAD
+=======
+
+    def get_Strength(self):
+        return self.Strength
+
+    def set_Strength(self, Strength):
+        self.Strength = Strength
+
+    def get_ArrowStyle(self):
+        return self.ArrowStyle
+
+    def set_ArrowStyle(self, ArrowStyle):
+        self.ArrowStyle = ArrowStyle
+
+    def get_LinkTypeReference(self):
+        return self.LinkTypeReference
+
+    def set_LinkTypeReference(self, LinkTypeReference):
+        self.LinkTypeReference = LinkTypeReference
+
+    def get_StrengthReference(self):
+        return self.StrengthReference
+
+    def set_StrengthReference(self, StrengthReference):
+        self.StrengthReference = StrengthReference
+
+    def get_LineColour(self):
+        return self.LineColour
+
+    def set_LineColour(self, LineColour):
+        self.LineColour = LineColour
+
+    def get_MlStyle(self):
+        return self.MlStyle
+
+    def set_MlStyle(self, MlStyle):
+        self.MlStyle = MlStyle
+
+    def get_FanOut(self):
+        return self.FanOut
+
+    def set_FanOut(self, FanOut):
+        self.FanOut = FanOut
+
+    def get_LineWidth(self):
+        return self.LineWidth
+
+    def set_LineWidth(self, LineWidth):
+        self.LineWidth = LineWidth
+
+    def get_Type(self):
+        return self.Type
+
+    def set_Type(self, Type):
+        self.Type = Type
+
+    def validate_ArrowStyleEnum(self, value):
+        # Validate type ArrowStyleEnum, a restriction on xsd:string.
+        pass
+
+    def validate_MultipleLinkStyleEnum(self, value):
+        # Validate type MultipleLinkStyleEnum, a restriction on xsd:string.
+        pass
+
+    def hasContent_(self):
+        if (
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
 
     def get_Strength(self):
         return self.Strength
@@ -17972,14 +18653,20 @@ class LinkStyle(GeneratedsSuper):
         if self.Strength is not None and 'Strength' not in already_processed:
             already_processed.add('Strength')
             outfile.write(' Strength=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.Strength).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='Strength'),))
+=======
+            self.gds_format_string(quote_attrib(self.Strength).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='Strength'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         if self.ArrowStyle is not None and 'ArrowStyle' not in already_processed:
             already_processed.add('ArrowStyle')
             outfile.write(' ArrowStyle=%s' % (quote_attrib(self.ArrowStyle),))
         if self.LinkTypeReference is not None and 'LinkTypeReference' not in already_processed:
             already_processed.add('LinkTypeReference')
             outfile.write(' LinkTypeReference=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.LinkTypeReference).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='LinkTypeReference'),))
         if self.StrengthReference is not None and 'StrengthReference' not in already_processed:
@@ -17987,6 +18674,15 @@ class LinkStyle(GeneratedsSuper):
             outfile.write(' StrengthReference=%s' % (
                 self.gds_format_string(quote_attrib(self.StrengthReference).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='StrengthReference'),))
+=======
+            self.gds_format_string(quote_attrib(self.LinkTypeReference).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='LinkTypeReference'),))
+        if self.StrengthReference is not None and 'StrengthReference' not in already_processed:
+            already_processed.add('StrengthReference')
+            outfile.write(' StrengthReference=%s' % (
+            self.gds_format_string(quote_attrib(self.StrengthReference).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='StrengthReference'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         if self.LineColour is not None and 'LineColour' not in already_processed:
             already_processed.add('LineColour')
             outfile.write(' LineColour="%s"' % self.gds_format_integer(self.LineColour, input_name='LineColour'))
@@ -18002,8 +18698,13 @@ class LinkStyle(GeneratedsSuper):
         if self.Type is not None and 'Type' not in already_processed:
             already_processed.add('Type')
             outfile.write(' Type=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.Type).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='Type'),))
+=======
+            self.gds_format_string(quote_attrib(self.Type).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='Type'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
 
     def exportChildren(self, outfile, level, namespace_='', name_='LinkStyle', fromsubclass_=False, pretty_print=True):
         pass
@@ -18207,6 +18908,7 @@ class LinkType(GeneratedsSuper):
             outfile.write(' SemanticTypeGuid=%s' % (quote_attrib(self.SemanticTypeGuid),))
         if self.Id is not None and 'Id' not in already_processed:
             already_processed.add('Id')
+<<<<<<< HEAD
             outfile.write(
                 ' Id=%s' % (self.gds_format_string(quote_attrib(self.Id).encode(ExternalEncoding).decode("utf-8"),
                                                    input_name='Id'),))
@@ -18215,6 +18917,15 @@ class LinkType(GeneratedsSuper):
             outfile.write(' Name=%s' % (
                 self.gds_format_string(quote_attrib(self.Name).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='Name'),))
+=======
+            outfile.write(' Id=%s' % (
+            self.gds_format_string(quote_attrib(self.Id).encode(ExternalEncoding).decode('utf-8'), input_name='Id'),))
+        if self.Name is not None and 'Name' not in already_processed:
+            already_processed.add('Name')
+            outfile.write(' Name=%s' % (
+            self.gds_format_string(quote_attrib(self.Name).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='Name'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
 
     def exportChildren(self, outfile, level, namespace_='', name_='LinkType', fromsubclass_=False, pretty_print=True):
         pass
@@ -18465,6 +19176,7 @@ class LinkTypeEntry(GeneratedsSuper):
         if self.LinkType is not None and 'LinkType' not in already_processed:
             already_processed.add('LinkType')
             outfile.write(' LinkType=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.LinkType).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='LinkType'),))
         if self.LinkTypeReference is not None and 'LinkTypeReference' not in already_processed:
@@ -18472,6 +19184,15 @@ class LinkTypeEntry(GeneratedsSuper):
             outfile.write(' LinkTypeReference=%s' % (
                 self.gds_format_string(quote_attrib(self.LinkTypeReference).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='LinkTypeReference'),))
+=======
+            self.gds_format_string(quote_attrib(self.LinkType).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='LinkType'),))
+        if self.LinkTypeReference is not None and 'LinkTypeReference' not in already_processed:
+            already_processed.add('LinkTypeReference')
+            outfile.write(' LinkTypeReference=%s' % (
+            self.gds_format_string(quote_attrib(self.LinkTypeReference).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='LinkTypeReference'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
 
     def exportChildren(self, outfile, level, namespace_='', name_='LinkTypeEntry', fromsubclass_=False,
                        pretty_print=True):
@@ -18795,24 +19516,39 @@ class OleItem(GeneratedsSuper):
         if self.ProgID is not None and 'ProgID' not in already_processed:
             already_processed.add('ProgID')
             outfile.write(' ProgID=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.ProgID).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='ProgID'),))
+=======
+            self.gds_format_string(quote_attrib(self.ProgID).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='ProgID'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         if self.DataLength is not None and 'DataLength' not in already_processed:
             already_processed.add('DataLength')
             outfile.write(' DataLength="%s"' % self.gds_format_integer(self.DataLength, input_name='DataLength'))
         if self.Path is not None and 'Path' not in already_processed:
             already_processed.add('Path')
             outfile.write(' Path=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.Path).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='Path'),))
+=======
+            self.gds_format_string(quote_attrib(self.Path).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='Path'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         if self.TextX is not None and 'TextX' not in already_processed:
             already_processed.add('TextX')
             outfile.write(' TextX="%s"' % self.gds_format_integer(self.TextX, input_name='TextX'))
         if self.DataGuid is not None and 'DataGuid' not in already_processed:
             already_processed.add('DataGuid')
             outfile.write(' DataGuid=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.DataGuid).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='DataGuid'),))
+=======
+            self.gds_format_string(quote_attrib(self.DataGuid).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='DataGuid'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         if self.Data is not None and 'Data' not in already_processed:
             already_processed.add('Data')
             outfile.write(' Data=%s' % (quote_attrib(self.Data),))
@@ -19098,14 +19834,20 @@ class OleItemStyle(GeneratedsSuper):
         if self.Strength is not None and 'Strength' not in already_processed:
             already_processed.add('Strength')
             outfile.write(' Strength=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.Strength).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='Strength'),))
+=======
+            self.gds_format_string(quote_attrib(self.Strength).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='Strength'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         if self.ShowFrame is not None and 'ShowFrame' not in already_processed:
             already_processed.add('ShowFrame')
             outfile.write(' ShowFrame="%s"' % self.gds_format_boolean(self.ShowFrame, input_name='ShowFrame'))
         if self.StrengthReference is not None and 'StrengthReference' not in already_processed:
             already_processed.add('StrengthReference')
             outfile.write(' StrengthReference=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.StrengthReference).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='StrengthReference'),))
         if self.EntityTypeReference is not None and 'EntityTypeReference' not in already_processed:
@@ -19113,6 +19855,15 @@ class OleItemStyle(GeneratedsSuper):
             outfile.write(' EntityTypeReference=%s' % (
                 self.gds_format_string(quote_attrib(self.EntityTypeReference).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='EntityTypeReference'),))
+=======
+            self.gds_format_string(quote_attrib(self.StrengthReference).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='StrengthReference'),))
+        if self.EntityTypeReference is not None and 'EntityTypeReference' not in already_processed:
+            already_processed.add('EntityTypeReference')
+            outfile.write(' EntityTypeReference=%s' % (
+            self.gds_format_string(quote_attrib(self.EntityTypeReference).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='EntityTypeReference'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         if self.LineColour is not None and 'LineColour' not in already_processed:
             already_processed.add('LineColour')
             outfile.write(' LineColour="%s"' % self.gds_format_integer(self.LineColour, input_name='LineColour'))
@@ -19122,8 +19873,13 @@ class OleItemStyle(GeneratedsSuper):
         if self.Type is not None and 'Type' not in already_processed:
             already_processed.add('Type')
             outfile.write(' Type=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.Type).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='Type'),))
+=======
+            self.gds_format_string(quote_attrib(self.Type).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='Type'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         if self.ShowAsIcon is not None and 'ShowAsIcon' not in already_processed:
             already_processed.add('ShowAsIcon')
             outfile.write(' ShowAsIcon="%s"' % self.gds_format_boolean(self.ShowAsIcon, input_name='ShowAsIcon'))
@@ -19592,8 +20348,13 @@ class PageSettings(GeneratedsSuper):
         if self.PaperSizeString is not None and 'PaperSizeString' not in already_processed:
             already_processed.add('PaperSizeString')
             outfile.write(' PaperSizeString=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.PaperSizeString).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='PaperSizeString'),))
+=======
+            self.gds_format_string(quote_attrib(self.PaperSizeString).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='PaperSizeString'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         if self.ThemeNameWidth is not None and 'ThemeNameWidth' not in already_processed:
             already_processed.add('ThemeNameWidth')
             outfile.write(
@@ -19832,8 +20593,13 @@ class Palette(GeneratedsSuper):
         if self.Name is not None and 'Name' not in already_processed:
             already_processed.add('Name')
             outfile.write(' Name=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.Name).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='Name'),))
+=======
+            self.gds_format_string(quote_attrib(self.Name).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='Name'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
 
     def exportChildren(self, outfile, level, namespace_='', name_='Palette', fromsubclass_=False, pretty_print=True):
         if pretty_print:
@@ -20024,8 +20790,13 @@ class PaletteBar(GeneratedsSuper):
         if self.CurrentPaletteName is not None and 'CurrentPaletteName' not in already_processed:
             already_processed.add('CurrentPaletteName')
             outfile.write(' CurrentPaletteName=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.CurrentPaletteName).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='CurrentPaletteName'),))
+=======
+            self.gds_format_string(quote_attrib(self.CurrentPaletteName).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='CurrentPaletteName'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
 
     def exportChildren(self, outfile, level, namespace_='', name_='PaletteBar', fromsubclass_=False, pretty_print=True):
         pass
@@ -20934,8 +21705,13 @@ class Snapshot(GeneratedsSuper):
         if self.Name is not None and 'Name' not in already_processed:
             already_processed.add('Name')
             outfile.write(' Name=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.Name).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='Name'),))
+=======
+            self.gds_format_string(quote_attrib(self.Name).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='Name'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         if self.ShowAll is not None and 'ShowAll' not in already_processed:
             already_processed.add('ShowAll')
             outfile.write(' ShowAll="%s"' % self.gds_format_boolean(self.ShowAll, input_name='ShowAll'))
@@ -20951,8 +21727,13 @@ class Snapshot(GeneratedsSuper):
         if self.ViewClassId is not None and 'ViewClassId' not in already_processed:
             already_processed.add('ViewClassId')
             outfile.write(' ViewClassId=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.ViewClassId).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='ViewClassId'),))
+=======
+            self.gds_format_string(quote_attrib(self.ViewClassId).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='ViewClassId'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
 
     def exportChildren(self, outfile, level, namespace_='', name_='Snapshot', fromsubclass_=False, pretty_print=True):
         if pretty_print:
@@ -21340,8 +22121,13 @@ class SnapshotItem(GeneratedsSuper):
         if self.ChartItemIdReference is not None and 'ChartItemIdReference' not in already_processed:
             already_processed.add('ChartItemIdReference')
             outfile.write(' ChartItemIdReference=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.ChartItemIdReference).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='ChartItemIdReference'),))
+=======
+            self.gds_format_string(quote_attrib(self.ChartItemIdReference).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='ChartItemIdReference'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         if self.TimeSet is not None and 'TimeSet' not in already_processed:
             already_processed.add('TimeSet')
             outfile.write(' TimeSet="%s"' % self.gds_format_boolean(self.TimeSet, input_name='TimeSet'))
@@ -21837,6 +22623,7 @@ class Strength(GeneratedsSuper):
             outfile.write(' DotStyle=%s' % (quote_attrib(self.DotStyle),))
         if self.Id is not None and 'Id' not in already_processed:
             already_processed.add('Id')
+<<<<<<< HEAD
             outfile.write(
                 ' Id=%s' % (self.gds_format_string(quote_attrib(self.Id).encode(ExternalEncoding).decode("utf-8"),
                                                    input_name='Id'),))
@@ -21845,6 +22632,15 @@ class Strength(GeneratedsSuper):
             outfile.write(' Name=%s' % (
                 self.gds_format_string(quote_attrib(self.Name).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='Name'),))
+=======
+            outfile.write(' Id=%s' % (
+            self.gds_format_string(quote_attrib(self.Id).encode(ExternalEncoding).decode('utf-8'), input_name='Id'),))
+        if self.Name is not None and 'Name' not in already_processed:
+            already_processed.add('Name')
+            outfile.write(' Name=%s' % (
+            self.gds_format_string(quote_attrib(self.Name).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='Name'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
 
     def exportChildren(self, outfile, level, namespace_='', name_='Strength', fromsubclass_=False, pretty_print=True):
         pass
@@ -22085,6 +22881,7 @@ class String(GeneratedsSuper):
         if self.Text is not None and 'Text' not in already_processed:
             already_processed.add('Text')
             outfile.write(' Text=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.Text).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='Text'),))
         if self.Id is not None and 'Id' not in already_processed:
@@ -22092,6 +22889,14 @@ class String(GeneratedsSuper):
             outfile.write(
                 ' Id=%s' % (self.gds_format_string(quote_attrib(self.Id).encode(ExternalEncoding).decode("utf-8"),
                                                    input_name='Id'),))
+=======
+            self.gds_format_string(quote_attrib(self.Text).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='Text'),))
+        if self.Id is not None and 'Id' not in already_processed:
+            already_processed.add('Id')
+            outfile.write(' Id=%s' % (
+            self.gds_format_string(quote_attrib(self.Id).encode(ExternalEncoding).decode('utf-8'), input_name='Id'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
 
     def exportChildren(self, outfile, level, namespace_='', name_='String', fromsubclass_=False, pretty_print=True):
         pass
@@ -22934,6 +23739,7 @@ class TextBlockStyle(GeneratedsSuper):
         if self.StrengthReference is not None and 'StrengthReference' not in already_processed:
             already_processed.add('StrengthReference')
             outfile.write(' StrengthReference=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.StrengthReference).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='StrengthReference'),))
         if self.EntityTypeReference is not None and 'EntityTypeReference' not in already_processed:
@@ -22941,6 +23747,15 @@ class TextBlockStyle(GeneratedsSuper):
             outfile.write(' EntityTypeReference=%s' % (
                 self.gds_format_string(quote_attrib(self.EntityTypeReference).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='EntityTypeReference'),))
+=======
+            self.gds_format_string(quote_attrib(self.StrengthReference).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='StrengthReference'),))
+        if self.EntityTypeReference is not None and 'EntityTypeReference' not in already_processed:
+            already_processed.add('EntityTypeReference')
+            outfile.write(' EntityTypeReference=%s' % (
+            self.gds_format_string(quote_attrib(self.EntityTypeReference).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='EntityTypeReference'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         if self.FillStyle is not None and 'FillStyle' not in already_processed:
             already_processed.add('FillStyle')
             outfile.write(' FillStyle=%s' % (quote_attrib(self.FillStyle),))
@@ -22959,16 +23774,26 @@ class TextBlockStyle(GeneratedsSuper):
         if self.Strength is not None and 'Strength' not in already_processed:
             already_processed.add('Strength')
             outfile.write(' Strength=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.Strength).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='Strength'),))
+=======
+            self.gds_format_string(quote_attrib(self.Strength).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='Strength'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         if self.Height is not None and 'Height' not in already_processed:
             already_processed.add('Height')
             outfile.write(' Height="%s"' % self.gds_format_double(self.Height, input_name='Height'))
         if self.Type is not None and 'Type' not in already_processed:
             already_processed.add('Type')
             outfile.write(' Type=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.Type).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='Type'),))
+=======
+            self.gds_format_string(quote_attrib(self.Type).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='Type'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         if self.Filled is not None and 'Filled' not in already_processed:
             already_processed.add('Filled')
             outfile.write(' Filled="%s"' % self.gds_format_boolean(self.Filled, input_name='Filled'))
@@ -23357,6 +24182,7 @@ class ThemeJunctions(GeneratedsSuper):
         if self.ThemeReference is not None and 'ThemeReference' not in already_processed:
             already_processed.add('ThemeReference')
             outfile.write(' ThemeReference=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.ThemeReference).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='ThemeReference'),))
         if self.ThemeId is not None and 'ThemeId' not in already_processed:
@@ -23364,6 +24190,15 @@ class ThemeJunctions(GeneratedsSuper):
             outfile.write(' ThemeId=%s' % (
                 self.gds_format_string(quote_attrib(self.ThemeId).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='ThemeId'),))
+=======
+            self.gds_format_string(quote_attrib(self.ThemeReference).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='ThemeReference'),))
+        if self.ThemeId is not None and 'ThemeId' not in already_processed:
+            already_processed.add('ThemeId')
+            outfile.write(' ThemeId=%s' % (
+            self.gds_format_string(quote_attrib(self.ThemeId).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='ThemeId'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
 
     def exportChildren(self, outfile, level, namespace_='', name_='ThemeJunctions', fromsubclass_=False,
                        pretty_print=True):
@@ -23635,8 +24470,13 @@ class ThemeStyle(GeneratedsSuper):
         if self.Strength is not None and 'Strength' not in already_processed:
             already_processed.add('Strength')
             outfile.write(' Strength=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.Strength).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='Strength'),))
+=======
+            self.gds_format_string(quote_attrib(self.Strength).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='Strength'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         if self.AfterThemeIconWiring is not None and 'AfterThemeIconWiring' not in already_processed:
             already_processed.add('AfterThemeIconWiring')
             outfile.write(' AfterThemeIconWiring=%s' % (quote_attrib(self.AfterThemeIconWiring),))
@@ -23647,6 +24487,7 @@ class ThemeStyle(GeneratedsSuper):
         if self.StrengthReference is not None and 'StrengthReference' not in already_processed:
             already_processed.add('StrengthReference')
             outfile.write(' StrengthReference=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.StrengthReference).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='StrengthReference'),))
         if self.EntityTypeReference is not None and 'EntityTypeReference' not in already_processed:
@@ -23654,6 +24495,15 @@ class ThemeStyle(GeneratedsSuper):
             outfile.write(' EntityTypeReference=%s' % (
                 self.gds_format_string(quote_attrib(self.EntityTypeReference).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='EntityTypeReference'),))
+=======
+            self.gds_format_string(quote_attrib(self.StrengthReference).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='StrengthReference'),))
+        if self.EntityTypeReference is not None and 'EntityTypeReference' not in already_processed:
+            already_processed.add('EntityTypeReference')
+            outfile.write(' EntityTypeReference=%s' % (
+            self.gds_format_string(quote_attrib(self.EntityTypeReference).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='EntityTypeReference'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         if self.LineColour is not None and 'LineColour' not in already_processed:
             already_processed.add('LineColour')
             outfile.write(' LineColour="%s"' % self.gds_format_integer(self.LineColour, input_name='LineColour'))
@@ -23680,8 +24530,13 @@ class ThemeStyle(GeneratedsSuper):
         if self.Type is not None and 'Type' not in already_processed:
             already_processed.add('Type')
             outfile.write(' Type=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.Type).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='Type'),))
+=======
+            self.gds_format_string(quote_attrib(self.Type).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='Type'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
 
     def exportChildren(self, outfile, level, namespace_='', name_='ThemeStyle', fromsubclass_=False, pretty_print=True):
         if pretty_print:
@@ -24650,8 +25505,13 @@ class TimeZone(GeneratedsSuper):
         if self.Name is not None and 'Name' not in already_processed:
             already_processed.add('Name')
             outfile.write(' Name=%s' % (
+<<<<<<< HEAD
                 self.gds_format_string(quote_attrib(self.Name).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='Name'),))
+=======
+            self.gds_format_string(quote_attrib(self.Name).encode(ExternalEncoding).decode('utf-8'),
+                                   input_name='Name'),))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         if self.UniqueID is not None and 'UniqueID' not in already_processed:
             already_processed.add('UniqueID')
             outfile.write(' UniqueID="%s"' % self.gds_format_integer(self.UniqueID, input_name='UniqueID'))
@@ -24776,12 +25636,20 @@ class SectorDefinition(GeneratedsSuper):
         if self.SectorID is not None:
             showIndent(outfile, level, pretty_print)
             outfile.write('<%sSectorID>%s</%sSectorID>%s' % (namespace_, self.gds_format_string(
+<<<<<<< HEAD
                 quote_xml(self.SectorID).encode(ExternalEncoding).decode("utf-8"), input_name='SectorID'), namespace_,
+=======
+                quote_xml(self.SectorID).encode(ExternalEncoding).decode('utf-8'), input_name='SectorID'), namespace_,
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
                                                              eol_))
         if self.Description is not None:
             showIndent(outfile, level, pretty_print)
             outfile.write('<%sDescription>%s</%sDescription>%s' % (namespace_, self.gds_format_string(
+<<<<<<< HEAD
                 quote_xml(self.Description).encode(ExternalEncoding).decode("utf-8"), input_name='Description'),
+=======
+                quote_xml(self.Description).encode(ExternalEncoding).decode('utf-8'), input_name='Description'),
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
                                                                    namespace_, eol_))
 
     def exportLiteral(self, outfile, level, name_='SectorDefinition'):
@@ -24797,10 +25665,17 @@ class SectorDefinition(GeneratedsSuper):
     def exportLiteralChildren(self, outfile, level, name_):
         if self.SectorID is not None:
             showIndent(outfile, level)
+<<<<<<< HEAD
             outfile.write('SectorID=%s,\n' % quote_python(self.SectorID).encode(ExternalEncoding).decode("utf-8"))
         if self.Description is not None:
             showIndent(outfile, level)
             outfile.write('Description=%s,\n' % quote_python(self.Description).encode(ExternalEncoding).decode("utf-8"))
+=======
+            outfile.write('SectorID=%s,\n' % quote_python(self.SectorID).encode(ExternalEncoding).decode('utf-8'))
+        if self.Description is not None:
+            showIndent(outfile, level)
+            outfile.write('Description=%s,\n' % quote_python(self.Description).encode(ExternalEncoding).decode('utf-8'))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
 
     def build(self, node):
         already_processed = set()
@@ -24923,6 +25798,7 @@ class DocumentationType(GeneratedsSuper):
         if self.Rationale is not None:
             showIndent(outfile, level, pretty_print)
             outfile.write('<%sRationale>%s</%sRationale>%s' % (namespace_, self.gds_format_string(
+<<<<<<< HEAD
                 quote_xml(self.Rationale).encode(ExternalEncoding).decode("utf-8"), input_name='Rationale'), namespace_,
                                                                eol_))
         for Synonym_ in self.Synonym:
@@ -24935,6 +25811,18 @@ class DocumentationType(GeneratedsSuper):
             showIndent(outfile, level, pretty_print)
             outfile.write('<%sDescription>%s</%sDescription>%s' % (namespace_, self.gds_format_string(
                 quote_xml(self.Description).encode(ExternalEncoding).decode("utf-8"), input_name='Description'),
+=======
+                quote_xml(self.Rationale).encode(ExternalEncoding).decode('utf-8'), input_name='Rationale'), namespace_,
+                                                               eol_))
+        for Synonym_ in self.Synonym:
+            showIndent(outfile, level, pretty_print)
+            outfile.write('<%sSynonym>%s</%sSynonym>%s' % (namespace_, self.gds_format_string(
+                quote_xml(Synonym_).encode(ExternalEncoding).decode('utf-8'), input_name='Synonym'), namespace_, eol_))
+        if self.Description is not None:
+            showIndent(outfile, level, pretty_print)
+            outfile.write('<%sDescription>%s</%sDescription>%s' % (namespace_, self.gds_format_string(
+                quote_xml(self.Description).encode(ExternalEncoding).decode('utf-8'), input_name='Description'),
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
                                                                    namespace_, eol_))
 
     def exportLiteral(self, outfile, level, name_='DocumentationType'):
@@ -24953,19 +25841,31 @@ class DocumentationType(GeneratedsSuper):
     def exportLiteralChildren(self, outfile, level, name_):
         if self.Rationale is not None:
             showIndent(outfile, level)
+<<<<<<< HEAD
             outfile.write('Rationale=%s,\n' % quote_python(self.Rationale).encode(ExternalEncoding).decode("utf-8"))
+=======
+            outfile.write('Rationale=%s,\n' % quote_python(self.Rationale).encode(ExternalEncoding).decode('utf-8'))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         showIndent(outfile, level)
         outfile.write('Synonym=[\n')
         level += 1
         for Synonym_ in self.Synonym:
             showIndent(outfile, level)
+<<<<<<< HEAD
             outfile.write('%s,\n' % quote_python(Synonym_).encode(ExternalEncoding).decode("utf-8"))
+=======
+            outfile.write('%s,\n' % quote_python(Synonym_).encode(ExternalEncoding).decode('utf-8'))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         level -= 1
         showIndent(outfile, level)
         outfile.write('],\n')
         if self.Description is not None:
             showIndent(outfile, level)
+<<<<<<< HEAD
             outfile.write('Description=%s,\n' % quote_python(self.Description).encode(ExternalEncoding).decode("utf-8"))
+=======
+            outfile.write('Description=%s,\n' % quote_python(self.Description).encode(ExternalEncoding).decode('utf-8'))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
 
     def build(self, node):
         already_processed = set()
@@ -25070,12 +25970,20 @@ class SimpleDocumentationType(GeneratedsSuper):
         if self.Rationale is not None:
             showIndent(outfile, level, pretty_print)
             outfile.write('<%sRationale>%s</%sRationale>%s' % (namespace_, self.gds_format_string(
+<<<<<<< HEAD
                 quote_xml(self.Rationale).encode(ExternalEncoding).decode("utf-8"), input_name='Rationale'), namespace_,
+=======
+                quote_xml(self.Rationale).encode(ExternalEncoding).decode('utf-8'), input_name='Rationale'), namespace_,
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
                                                                eol_))
         if self.Description is not None:
             showIndent(outfile, level, pretty_print)
             outfile.write('<%sDescription>%s</%sDescription>%s' % (namespace_, self.gds_format_string(
+<<<<<<< HEAD
                 quote_xml(self.Description).encode(ExternalEncoding).decode("utf-8"), input_name='Description'),
+=======
+                quote_xml(self.Description).encode(ExternalEncoding).decode('utf-8'), input_name='Description'),
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
                                                                    namespace_, eol_))
 
     def exportLiteral(self, outfile, level, name_='SimpleDocumentationType'):
@@ -25091,10 +25999,17 @@ class SimpleDocumentationType(GeneratedsSuper):
     def exportLiteralChildren(self, outfile, level, name_):
         if self.Rationale is not None:
             showIndent(outfile, level)
+<<<<<<< HEAD
             outfile.write('Rationale=%s,\n' % quote_python(self.Rationale).encode(ExternalEncoding).decode("utf-8"))
         if self.Description is not None:
             showIndent(outfile, level)
             outfile.write('Description=%s,\n' % quote_python(self.Description).encode(ExternalEncoding).decode("utf-8"))
+=======
+            outfile.write('Rationale=%s,\n' % quote_python(self.Rationale).encode(ExternalEncoding).decode('utf-8'))
+        if self.Description is not None:
+            showIndent(outfile, level)
+            outfile.write('Description=%s,\n' % quote_python(self.Description).encode(ExternalEncoding).decode('utf-8'))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
 
     def build(self, node):
         already_processed = set()
@@ -25653,6 +26568,7 @@ class TypeType(GeneratedsSuper):
         if self.TypeName is not None:
             showIndent(outfile, level, pretty_print)
             outfile.write('<%sTypeName>%s</%sTypeName>%s' % (namespace_, self.gds_format_string(
+<<<<<<< HEAD
                 quote_xml(self.TypeName).encode(ExternalEncoding).decode("utf-8"), input_name='TypeName'), namespace_,
                                                              eol_))
         for ImageFile_ in self.ImageFile:
@@ -25662,14 +26578,28 @@ class TypeType(GeneratedsSuper):
                 self.gds_format_string(quote_xml(ImageFile_).encode(ExternalEncoding).decode("utf-8"),
                                        input_name='ImageFile'),
                 namespace_, eol_))
+=======
+                quote_xml(self.TypeName).encode(ExternalEncoding).decode('utf-8'), input_name='TypeName'), namespace_,
+                                                             eol_))
+        for ImageFile_ in self.ImageFile:
+            showIndent(outfile, level, pretty_print)
+            outfile.write('<%sImageFile>%s</%sImageFile>%s' % (namespace_, self.gds_format_string(
+                quote_xml(ImageFile_).encode(ExternalEncoding).decode('utf-8'), input_name='ImageFile'), namespace_,
+                                                               eol_))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         for LNMapping_ in self.LNMapping:
             LNMapping_.export(outfile, level, namespace_, name_='LNMapping', pretty_print=pretty_print)
         for Sector_ in self.Sector:
             showIndent(outfile, level, pretty_print)
+<<<<<<< HEAD
             outfile.write('<%sSector>%s</%sSector>%s' % (
                 namespace_, self.gds_format_string(quote_xml(Sector_).encode(ExternalEncoding).decode("utf-8"),
                                                    input_name='Sector'),
                 namespace_, eol_))
+=======
+            outfile.write('<%sSector>%s</%sSector>%s' % (namespace_, self.gds_format_string(
+                quote_xml(Sector_).encode(ExternalEncoding).decode('utf-8'), input_name='Sector'), namespace_, eol_))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         if self.Documentation is not None:
             self.Documentation.export(outfile, level, namespace_, name_='Documentation', pretty_print=pretty_print)
 
@@ -25701,13 +26631,21 @@ class TypeType(GeneratedsSuper):
     def exportLiteralChildren(self, outfile, level, name_):
         if self.TypeName is not None:
             showIndent(outfile, level)
+<<<<<<< HEAD
             outfile.write('TypeName=%s,\n' % quote_python(self.TypeName).encode(ExternalEncoding).decode("utf-8"))
+=======
+            outfile.write('TypeName=%s,\n' % quote_python(self.TypeName).encode(ExternalEncoding).decode('utf-8'))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         showIndent(outfile, level)
         outfile.write('ImageFile=[\n')
         level += 1
         for ImageFile_ in self.ImageFile:
             showIndent(outfile, level)
+<<<<<<< HEAD
             outfile.write('%s,\n' % quote_python(ImageFile_).encode(ExternalEncoding).decode("utf-8"))
+=======
+            outfile.write('%s,\n' % quote_python(ImageFile_).encode(ExternalEncoding).decode('utf-8'))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         level -= 1
         showIndent(outfile, level)
         outfile.write('],\n')
@@ -25728,7 +26666,11 @@ class TypeType(GeneratedsSuper):
         level += 1
         for Sector_ in self.Sector:
             showIndent(outfile, level)
+<<<<<<< HEAD
             outfile.write('%s,\n' % quote_python(Sector_).encode(ExternalEncoding).decode("utf-8"))
+=======
+            outfile.write('%s,\n' % quote_python(Sector_).encode(ExternalEncoding).decode('utf-8'))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         level -= 1
         showIndent(outfile, level)
         outfile.write('],\n')
@@ -25982,7 +26924,11 @@ class PropertyType(GeneratedsSuper):
         if self.PropertyName is not None:
             showIndent(outfile, level, pretty_print)
             outfile.write('<%sPropertyName>%s</%sPropertyName>%s' % (namespace_, self.gds_format_string(
+<<<<<<< HEAD
                 quote_xml(self.PropertyName).encode(ExternalEncoding).decode("utf-8"), input_name='PropertyName'),
+=======
+                quote_xml(self.PropertyName).encode(ExternalEncoding).decode('utf-8'), input_name='PropertyName'),
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
                                                                      namespace_, eol_))
         for RelatedType_ in self.RelatedType:
             RelatedType_.export(outfile, level, namespace_, name_='RelatedType', pretty_print=pretty_print)
@@ -25994,10 +26940,15 @@ class PropertyType(GeneratedsSuper):
             UnrelatedForm_.export(outfile, level, namespace_, name_='UnrelatedForm', pretty_print=pretty_print)
         for Sector_ in self.Sector:
             showIndent(outfile, level, pretty_print)
+<<<<<<< HEAD
             outfile.write('<%sSector>%s</%sSector>%s' % (
                 namespace_, self.gds_format_string(quote_xml(Sector_).encode(ExternalEncoding).decode("utf-8"),
                                                    input_name='Sector'),
                 namespace_, eol_))
+=======
+            outfile.write('<%sSector>%s</%sSector>%s' % (namespace_, self.gds_format_string(
+                quote_xml(Sector_).encode(ExternalEncoding).decode('utf-8'), input_name='Sector'), namespace_, eol_))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         if self.Documentation is not None:
             self.Documentation.export(outfile, level, namespace_, name_='Documentation', pretty_print=pretty_print)
 
@@ -26026,7 +26977,11 @@ class PropertyType(GeneratedsSuper):
         if self.PropertyName is not None:
             showIndent(outfile, level)
             outfile.write(
+<<<<<<< HEAD
                 'PropertyName=%s,\n' % quote_python(self.PropertyName).encode(ExternalEncoding).decode("utf-8"))
+=======
+                'PropertyName=%s,\n' % quote_python(self.PropertyName).encode(ExternalEncoding).decode('utf-8'))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         showIndent(outfile, level)
         outfile.write('RelatedType=[\n')
         level += 1
@@ -26080,7 +27035,11 @@ class PropertyType(GeneratedsSuper):
         level += 1
         for Sector_ in self.Sector:
             showIndent(outfile, level)
+<<<<<<< HEAD
             outfile.write('%s,\n' % quote_python(Sector_).encode(ExternalEncoding).decode("utf-8"))
+=======
+            outfile.write('%s,\n' % quote_python(Sector_).encode(ExternalEncoding).decode('utf-8'))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         level -= 1
         showIndent(outfile, level)
         outfile.write('],\n')
@@ -26277,12 +27236,20 @@ class FormType(GeneratedsSuper):
         if self.FormName is not None:
             showIndent(outfile, level, pretty_print)
             outfile.write('<%sFormName>%s</%sFormName>%s' % (namespace_, self.gds_format_string(
+<<<<<<< HEAD
                 quote_xml(self.FormName).encode(ExternalEncoding).decode("utf-8"), input_name='FormName'), namespace_,
+=======
+                quote_xml(self.FormName).encode(ExternalEncoding).decode('utf-8'), input_name='FormName'), namespace_,
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
                                                              eol_))
         if self.baseForm is not None:
             showIndent(outfile, level, pretty_print)
             outfile.write('<%sbaseForm>%s</%sbaseForm>%s' % (namespace_, self.gds_format_string(
+<<<<<<< HEAD
                 quote_xml(self.baseForm).encode(ExternalEncoding).decode("utf-8"), input_name='baseForm'), namespace_,
+=======
+                quote_xml(self.baseForm).encode(ExternalEncoding).decode('utf-8'), input_name='baseForm'), namespace_,
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
                                                              eol_))
         if self.formatters is not None:
             self.formatters.export(outfile, level, namespace_, name_='formatters', pretty_print=pretty_print)
@@ -26313,10 +27280,17 @@ class FormType(GeneratedsSuper):
     def exportLiteralChildren(self, outfile, level, name_):
         if self.FormName is not None:
             showIndent(outfile, level)
+<<<<<<< HEAD
             outfile.write('FormName=%s,\n' % quote_python(self.FormName).encode(ExternalEncoding).decode("utf-8"))
         if self.baseForm is not None:
             showIndent(outfile, level)
             outfile.write('baseForm=%s,\n' % quote_python(self.baseForm).encode(ExternalEncoding).decode("utf-8"))
+=======
+            outfile.write('FormName=%s,\n' % quote_python(self.FormName).encode(ExternalEncoding).decode('utf-8'))
+        if self.baseForm is not None:
+            showIndent(outfile, level)
+            outfile.write('baseForm=%s,\n' % quote_python(self.baseForm).encode(ExternalEncoding).decode('utf-8'))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         if self.formatters is not None:
             showIndent(outfile, level)
             outfile.write('formatters=model_.formattersType(\n')
@@ -26456,10 +27430,15 @@ class DomainType(GeneratedsSuper):
             eol_ = ''
         for Unit_ in self.Unit:
             showIndent(outfile, level, pretty_print)
+<<<<<<< HEAD
             outfile.write('<%sUnit>%s</%sUnit>%s' % (
                 namespace_,
                 self.gds_format_string(quote_xml(Unit_).encode(ExternalEncoding).decode("utf-8"), input_name='Unit'),
                 namespace_, eol_))
+=======
+            outfile.write('<%sUnit>%s</%sUnit>%s' % (namespace_, self.gds_format_string(
+                quote_xml(Unit_).encode(ExternalEncoding).decode('utf-8'), input_name='Unit'), namespace_, eol_))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
 
     def exportLiteral(self, outfile, level, name_='DomainType'):
         level += 1
@@ -26480,7 +27459,11 @@ class DomainType(GeneratedsSuper):
         level += 1
         for Unit_ in self.Unit:
             showIndent(outfile, level)
+<<<<<<< HEAD
             outfile.write('%s,\n' % quote_python(Unit_).encode(ExternalEncoding).decode("utf-8"))
+=======
+            outfile.write('%s,\n' % quote_python(Unit_).encode(ExternalEncoding).decode('utf-8'))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
         level -= 1
         showIndent(outfile, level)
         outfile.write('],\n')
@@ -26589,12 +27572,20 @@ class LNMappingType(GeneratedsSuper):
         if self.IconFile is not None:
             showIndent(outfile, level, pretty_print)
             outfile.write('<%sIconFile>%s</%sIconFile>%s' % (namespace_, self.gds_format_string(
+<<<<<<< HEAD
                 quote_xml(self.IconFile).encode(ExternalEncoding).decode("utf-8"), input_name='IconFile'), namespace_,
+=======
+                quote_xml(self.IconFile).encode(ExternalEncoding).decode('utf-8'), input_name='IconFile'), namespace_,
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
                                                              eol_))
         if self.TypeName is not None:
             showIndent(outfile, level, pretty_print)
             outfile.write('<%sTypeName>%s</%sTypeName>%s' % (namespace_, self.gds_format_string(
+<<<<<<< HEAD
                 quote_xml(self.TypeName).encode(ExternalEncoding).decode("utf-8"), input_name='TypeName'), namespace_,
+=======
+                quote_xml(self.TypeName).encode(ExternalEncoding).decode('utf-8'), input_name='TypeName'), namespace_,
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
                                                              eol_))
 
     def exportLiteral(self, outfile, level, name_='LNMappingType'):
@@ -26613,10 +27604,17 @@ class LNMappingType(GeneratedsSuper):
     def exportLiteralChildren(self, outfile, level, name_):
         if self.IconFile is not None:
             showIndent(outfile, level)
+<<<<<<< HEAD
             outfile.write('IconFile=%s,\n' % quote_python(self.IconFile).encode(ExternalEncoding).decode("utf-8"))
         if self.TypeName is not None:
             showIndent(outfile, level)
             outfile.write('TypeName=%s,\n' % quote_python(self.TypeName).encode(ExternalEncoding).decode("utf-8"))
+=======
+            outfile.write('IconFile=%s,\n' % quote_python(self.IconFile).encode(ExternalEncoding).decode('utf-8'))
+        if self.TypeName is not None:
+            showIndent(outfile, level)
+            outfile.write('TypeName=%s,\n' % quote_python(self.TypeName).encode(ExternalEncoding).decode('utf-8'))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
 
     def build(self, node):
         already_processed = set()
@@ -27192,7 +28190,11 @@ class formatterType(GeneratedsSuper):
         self.exportAttributes(outfile, level, already_processed, namespace_, name_='formatterType')
         if self.hasContent_():
             outfile.write('>')
+<<<<<<< HEAD
             outfile.write(str(self.valueOf_).encode(ExternalEncoding).decode("utf-8"))
+=======
+            outfile.write(str(self.valueOf_).encode(ExternalEncoding).decode('utf-8'))
+>>>>>>> b2f529b4ff4e1ae5517d34e592ac2caccd73ca7c
             self.exportChildren(outfile, level + 1, namespace_='', name_='formatterType', pretty_print=pretty_print)
             outfile.write('</%s%s>%s' % (namespace_, name_, eol_))
         else:
